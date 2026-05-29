@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NotiMate — AI ดูแลธุรกิจแทนคุณ</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--green:#06C755;--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--text:#f0f0f0;--muted:#777;--border:#222}
+body{background:var(--bg);color:var(--text);font-family:'Sarabun',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+a{color:var(--green);text-decoration:none}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(10,10,10,0.94);backdrop-filter:blur(12px)}
+.logo{font-size:1.2rem;font-weight:700;color:var(--text)}.logo span{color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.lang-sw{display:flex;gap:0;background:var(--bg3);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.lang-btn{padding:0.35rem 0.7rem;font-size:0.72rem;font-weight:700;font-family:'IBM Plex Mono',monospace;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s;letter-spacing:.5px}
+.lang-btn.active{background:var(--green);color:#000}
+.nav-cta{background:var(--green);color:#000;padding:0.5rem 1.25rem;border-radius:6px;font-weight:700;font-size:0.875rem}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 4rem;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 40% at 50% 0%,rgba(6,199,85,0.07) 0%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(6,199,85,.1);border:1px solid rgba(6,199,85,.2);color:var(--green);padding:.35rem 1rem;border-radius:999px;font-size:.75rem;font-weight:600;margin-bottom:2rem;font-family:'IBM Plex Mono',monospace}
+.dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-1.5px;margin-bottom:1rem;max-width:820px}
+h1 .g{color:var(--green)}
+.sub{font-size:1rem;color:var(--muted);max-width:500px;margin:0 auto 2.5rem;line-height:1.9}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.btn-p{background:var(--green);color:#000;padding:.875rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:.5rem}
+.btn-s{background:transparent;color:var(--text);padding:.875rem 2rem;border-radius:8px;font-weight:600;font-size:1rem;border:1px solid var(--border)}
+.lineid{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--muted)}
+.phone{width:270px;margin:3rem auto 0;background:var(--bg2);border-radius:22px;border:1px solid var(--border);padding:1.1rem}
+.phone::before{content:'';display:block;width:65px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 1.1rem}
+.cb{border-radius:10px 10px 10px 2px;padding:.55rem .8rem;margin-bottom:.45rem;font-size:.77rem;line-height:1.55;animation:up .4s ease both;opacity:0}
+.cb.b{background:rgba(6,199,85,.09);border:1px solid rgba(6,199,85,.18)}
+.cb.u{background:var(--bg3);border:1px solid var(--border);margin-left:2.5rem;border-radius:10px 10px 2px 10px;text-align:right}
+.cn{font-size:.62rem;color:var(--green);font-weight:700;margin-bottom:.15rem;font-family:'IBM Plex Mono',monospace}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.cb:nth-child(1){animation-delay:.2s}.cb:nth-child(2){animation-delay:.7s}.cb:nth-child(3){animation-delay:1.2s}.cb:nth-child(4){animation-delay:1.7s}.cb:nth-child(5){animation-delay:2.2s}
+.sec{padding:5rem 2rem;max-width:1080px;margin:0 auto}
+.lbl{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:.6rem}
+.stitle{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-1px;margin-bottom:.6rem}
+.ssub{color:var(--muted);font-size:.95rem;max-width:460px;line-height:1.85}
+.divl{height:1px;background:var(--border)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:2.5rem}
+.step{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem}
+.snum{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--green);letter-spacing:2px;margin-bottom:.6rem;opacity:.7}
+.sico{font-size:1.3rem;margin-bottom:.5rem}
+.stit{font-size:.9rem;font-weight:700;margin-bottom:.35rem}
+.sdesc{font-size:.8rem;color:var(--muted);line-height:1.7}
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;margin-top:2.5rem}
+.fc{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;transition:border-color .2s}
+.fc:hover{border-color:rgba(6,199,85,.25)}
+.fc.hot{border-color:rgba(6,199,85,.3);background:rgba(6,199,85,.04)}
+.ftag{display:inline-block;background:rgba(6,199,85,.12);color:var(--green);font-size:.62rem;font-weight:700;padding:.18rem .55rem;border-radius:4px;margin-bottom:.65rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.5px}
+.ftit{font-size:.95rem;font-weight:700;margin-bottom:.35rem}
+.fdesc{font-size:.82rem;color:var(--muted);line-height:1.75}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:2.5rem}
+.pc{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.75rem;position:relative}
+.pc.pop{border-color:var(--green)}
+.pbadge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--green);color:#000;font-size:.62rem;font-weight:700;padding:.22rem .9rem;border-radius:0 0 8px 8px;font-family:'IBM Plex Mono',monospace;letter-spacing:.5px;white-space:nowrap}
+.pname{font-size:.68rem;font-weight:700;color:var(--muted);letter-spacing:2px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;margin-bottom:.5rem}
+.setup-fee{background:rgba(6,199,85,.08);border:1px solid rgba(6,199,85,.2);border-radius:8px;padding:.55rem .9rem;margin-bottom:.9rem}
+.setup-label{font-size:.62rem;color:var(--green);font-family:'IBM Plex Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:.1rem}
+.setup-amt{font-size:1.4rem;font-weight:700;letter-spacing:-1px}
+.setup-note{font-size:.7rem;color:var(--muted)}
+.sub-label{font-size:.62rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:.1rem;margin-top:.65rem}
+.sub-amt{font-size:1.9rem;font-weight:700;letter-spacing:-1px}
+.sub-amt em{font-size:.82rem;font-weight:400;color:var(--muted);font-style:normal}
+.pperiod{font-size:.72rem;color:var(--muted);margin-bottom:1.1rem}
+.plist{list-style:none;margin-bottom:1.4rem}
+.plist li{font-size:.82rem;padding:.3rem 0;border-bottom:1px solid var(--border);color:var(--muted);display:flex;align-items:center;gap:.45rem}
+.plist li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.pbtn{display:block;padding:.7rem;border-radius:8px;font-weight:700;font-size:.84rem;border:1px solid var(--border);color:var(--text);text-align:center}
+.pc.pop .pbtn{background:var(--green);color:#000;border-color:var(--green)}
+.onboard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+@media(max-width:580px){.onboard{grid-template-columns:1fr}.nav-right{gap:.6rem}}
+.ob-title{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.ob-list{list-style:none;margin-top:.75rem}
+.ob-list li{font-size:.82rem;color:var(--muted);padding:.27rem 0;display:flex;gap:.45rem}
+.ob-list li::before{content:'→';color:var(--green);flex-shrink:0}
+.faq{margin-top:2.5rem;max-width:700px}
+.fq{border-bottom:1px solid var(--border);padding:1.1rem 0}
+.fq-q{font-weight:700;font-size:.92rem;margin-bottom:.35rem;color:var(--text)}
+.fq-a{font-size:.84rem;color:var(--muted);line-height:1.8}
+.cta-s{text-align:center;padding:5.5rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(to bottom,var(--bg),rgba(6,199,85,.04),var(--bg))}
+.cta-t{font-size:clamp(1.9rem,5vw,3.2rem);font-weight:700;letter-spacing:-1.5px;margin-bottom:.7rem}
+.cta-sub{color:var(--muted);margin-bottom:2.2rem;font-size:.95rem}
+footer{padding:1.6rem 2rem;border-top:1px solid var(--border)}
+.fi{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem}
+.fl{font-weight:700;font-size:.95rem}.fl span{color:var(--green)}
+.fc2{font-size:.72rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="logo">Noti<span>Mate</span></div>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lang-btn active" onclick="setLang('th')">TH</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    </div>
+    <a href="https://line.me/R/ti/p/@306bqpwf" class="nav-cta" id="nav-cta-btn">ทดลองวันนี้ →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge"><div class="dot"></div><span id="badge-text">AI สำหรับธุรกิจไทย</span></div>
+  <h1 id="hero-title">ไม่ต้องอ่าน<br>ทุกข้อความ<br><span class="g">NotiMate ทำแทนคุณ</span></h1>
+  <p class="sub" id="hero-sub">ระบบ AI ที่คอยติดตามแชทกลุ่มพนักงาน LINE ของคุณ 24/7 แจ้งเฉพาะสิ่งสำคัญ — ไม่ต้องพลาดอะไรอีกแล้ว</p>
+  <div class="hero-btns">
+    <a href="https://line.me/R/ti/p/@306bqpwf" class="btn-p" id="btn-start">เริ่มใช้งาน ↗</a>
+    <a href="#pricing" class="btn-s" id="btn-price">ดูราคา</a>
+  </div>
+  <div class="lineid">LINE OA: @306bqpwf</div>
+  <div class="phone">
+    <div class="cb b"><div class="cn">🔔 NotiMate</div><span class="chat1">น้ำตาลทรายหมดแล้ว — พนักงานขอสั่งเพิ่ม 5 กิโล</span></div>
+    <div class="cb b"><div class="cn">🔔 NotiMate</div><span class="chat2">รายจ่ายวันนี้: ฿2,450 (วัตถุดิบ + แพ็คเกจ)</span></div>
+    <div class="cb u"><span class="chat3">✅ รับทราบ สั่งแล้ว</span></div>
+    <div class="cb b"><div class="cn">⚠️ NotiMate</div><span class="chat4">เครื่องทำกาแฟเสียครับ พนักงานรอคำสั่ง</span></div>
+    <div class="cb u"><span class="chat5">📞 โทรหาช่างทันที</span></div>
+  </div>
+</section>
+
+<div class="divl"></div>
+
+<section class="sec" id="how">
+  <div class="lbl" id="how-lbl">วิธีการทำงาน</div>
+  <div class="stitle" id="how-title">ตั้งค่าใน 5 นาที</div>
+  <div class="ssub" id="how-sub">ทำงานบน LINE ที่มีอยู่แล้ว ไม่ต้องติดตั้งแอปเพิ่ม</div>
+  <div class="steps">
+    <div class="step"><div class="snum">STEP 01</div><div class="sico">💬</div><div class="stit" id="s1t">เพิ่มบอทเข้ากลุ่ม</div><div class="sdesc" id="s1d">เพิ่ม NotiMate เข้ากลุ่ม LINE พนักงานที่มีอยู่ ใช้เวลา 1 นาที</div></div>
+    <div class="step"><div class="snum">STEP 02</div><div class="sico">⚙️</div><div class="stit" id="s2t">ตั้งค่าร่วมกัน</div><div class="sdesc" id="s2d">ทีมงานช่วยตั้งค่าให้ตรงกับธุรกิจของคุณ</div></div>
+    <div class="step"><div class="snum">STEP 03</div><div class="sico">🧠</div><div class="stit" id="s3t">AI เริ่มทำงาน</div><div class="sdesc" id="s3d">NotiMate วิเคราะห์ทุกข้อความ แยกแยะสิ่งที่ต้องการความสนใจ</div></div>
+    <div class="step"><div class="snum">STEP 04</div><div class="sico">🔔</div><div class="stit" id="s4t">รับแจ้งเตือน</div><div class="sdesc" id="s4d">คุณได้รับเฉพาะข้อความสำคัญ — คำสั่งซื้อ ปัญหา ยอดเงิน</div></div>
+  </div>
+</section>
+
+<div class="divl"></div>
+
+<section class="sec">
+  <div class="lbl" id="feat-lbl">ฟีเจอร์</div>
+  <div class="stitle" id="feat-title">ครบ ในที่เดียว</div>
+  <div class="feats">
+    <div class="fc hot"><div class="ftag">CORE</div><div class="ftit" id="f1t">🔔 แจ้งเตือนอัจฉริยะ</div><div class="fdesc" id="f1d">AI วิเคราะห์ทุกข้อความ แจ้งเฉพาะสิ่งที่สำคัญ ไม่มี spam</div></div>
+    <div class="fc"><div class="ftit" id="f2t">📸 สแกนใบเสร็จ</div><div class="fdesc" id="f2d">ถ่ายรูปใบเสร็จ AI อ่านและบันทึกรายจ่ายเข้า Google Sheets อัตโนมัติ</div></div>
+    <div class="fc"><div class="ftit" id="f3t">📦 ติดตามสต็อก</div><div class="fdesc" id="f3d">พนักงานแจ้งสินค้าหมด บอทบันทึกและแจ้งเตือนให้สั่งซื้อโดยอัตโนมัติ</div></div>
+    <div class="fc"><div class="ftit" id="f4t">💰 สรุปรายจ่าย</div><div class="fdesc" id="f4d">รายงานรายจ่ายประจำวันส่งตรงมาที่ LINE ของคุณทุกเช้า</div></div>
+    <div class="fc"><div class="ftit" id="f5t">⚠️ แจ้งเหตุฉุกเฉิน</div><div class="fdesc" id="f5d">เครื่องเสีย พนักงานขาด ปัญหาลูกค้า — แจ้งคุณทันที</div></div>
+    <div class="fc"><div class="ftit" id="f6t">📊 Google Sheets</div><div class="fdesc" id="f6d">ข้อมูลทั้งหมดเข้า Google Sheets อัตโนมัติ แยกชีตตามประเภท</div></div>
+  </div>
+</section>
+
+<div class="divl"></div>
+
+<section class="sec" id="pricing">
+  <div class="lbl" id="price-lbl">ราคา</div>
+  <div class="stitle" id="price-title">ชัดเจน ไม่มีซ่อน</div>
+  <div class="ssub" id="price-sub">ค่าตั้งค่าครั้งเดียว + ค่าสมาชิกรายเดือน ยกเลิกได้ทุกเมื่อ</div>
+  <div class="pricing">
+    <div class="pc">
+      <div class="pname">Starter</div>
+      <div class="setup-fee"><div class="setup-label" id="setup-lbl">ค่าตั้งค่าครั้งเดียว</div><div class="setup-amt">฿1,500</div><div class="setup-note" id="setup-note1">รวมติดตั้ง + ตั้งค่า + ทดสอบ</div></div>
+      <div class="sub-label" id="sub-lbl1">ค่าสมาชิก/เดือน</div>
+      <div class="sub-amt">฿1,500 <em id="per-mo1">/เดือน</em></div>
+      <div class="pperiod" id="p1period">สำหรับร้านเดี่ยว 1 กลุ่ม LINE</div>
+      <ul class="plist"><li id="p1f1">1 กลุ่ม LINE</li><li id="p1f2">แจ้งเตือนอัจฉริยะ</li><li id="p1f3">สแกนใบเสร็จ</li><li id="p1f4">สรุปรายจ่ายรายวัน</li><li id="p1f5">Google Sheets 1 ชีต</li><li id="p1f6">support ทาง LINE</li></ul>
+      <a href="https://line.me/R/ti/p/@306bqpwf" class="pbtn" id="pbtn1">สอบถามเพิ่มเติม</a>
+    </div>
+    <div class="pc pop">
+      <div class="pbadge" id="popular-badge">ยอดนิยม</div>
+      <div class="pname">Pro</div>
+      <div class="setup-fee"><div class="setup-label" id="setup-lbl2">ค่าตั้งค่าครั้งเดียว</div><div class="setup-amt">฿2,500</div><div class="setup-note" id="setup-note2">รวมติดตั้ง + ตั้งค่า custom + ทดสอบ</div></div>
+      <div class="sub-label" id="sub-lbl2">ค่าสมาชิก/เดือน</div>
+      <div class="sub-amt">฿2,000 <em id="per-mo2">/เดือน</em></div>
+      <div class="pperiod" id="p2period">สำหรับร้านที่ต้องการครบ 3 กลุ่ม</div>
+      <ul class="plist"><li id="p2f1">3 กลุ่ม LINE</li><li id="p2f2">AI วิเคราะห์ขั้นสูง</li><li id="p2f3">สแกนใบเสร็จ + ใบส่งของ</li><li id="p2f4">สรุปรายจ่าย + สต็อก</li><li id="p2f5">Google Sheets ครบชุด</li><li id="p2f6">รายงานรายสัปดาห์</li><li id="p2f7">priority support 24/7</li></ul>
+      <a href="https://line.me/R/ti/p/@306bqpwf" class="pbtn" id="pbtn2">เริ่มใช้งาน</a>
+    </div>
+    <div class="pc">
+      <div class="pname">Business</div>
+      <div class="setup-fee"><div class="setup-label" id="setup-lbl3">ค่าตั้งค่าครั้งเดียว</div><div class="setup-amt">฿4,000</div><div class="setup-note" id="setup-note3">รวม custom setup + integration</div></div>
+      <div class="sub-label" id="sub-lbl3">ค่าสมาชิก/เดือน</div>
+      <div class="sub-amt">฿3,500 <em id="per-mo3">/เดือน</em></div>
+      <div class="pperiod" id="p3period">สำหรับหลายสาขา ไม่จำกัดกลุ่ม</div>
+      <ul class="plist"><li id="p3f1">ไม่จำกัดกลุ่ม LINE</li><li id="p3f2">หลายสาขา</li><li id="p3f3">Custom AI สำหรับธุรกิจ</li><li id="p3f4">Dashboard + รายงาน</li><li id="p3f5">API integration</li><li id="p3f6">Account manager ส่วนตัว</li></ul>
+      <a href="https://line.me/R/ti/p/@306bqpwf" class="pbtn" id="pbtn3">ติดต่อทีมงาน</a>
+    </div>
+  </div>
+  <div class="onboard">
+    <div>
+      <div class="ob-title" id="ob1t">🛠 ค่าตั้งค่าครั้งเดียวรวมอะไรบ้าง?</div>
+      <ul class="ob-list"><li id="ob1l1">เพิ่มบอทเข้ากลุ่ม LINE และตั้งค่า webhook</li><li id="ob1l2">ตั้งค่า AI ให้ตรงกับธุรกิจของคุณ</li><li id="ob1l3">เชื่อมต่อ Google Sheets ตามรูปแบบที่ต้องการ</li><li id="ob1l4">ทดสอบและปรับแต่งจนพอใจ</li><li id="ob1l5">อบรมการใช้งานเบื้องต้น</li></ul>
+    </div>
+    <div>
+      <div class="ob-title" id="ob2t">📅 ระยะเวลาติดตั้ง</div>
+      <ul class="ob-list"><li id="ob2l1">วันที่ 1: รับข้อมูล + ตั้งค่าระบบ</li><li id="ob2l2">วันที่ 2: ทดสอบร่วมกัน + ปรับแต่ง</li><li id="ob2l3">หลังจากนั้น: ใช้งานได้เลย</li><li id="ob2l4">มีปัญหา: ติดต่อได้ตลอด</li></ul>
+    </div>
+  </div>
+</section>
+
+<div class="divl"></div>
+
+<section class="sec">
+  <div class="lbl" id="faq-lbl">คำถามที่พบบ่อย</div>
+  <div class="stitle" id="faq-title">มีข้อสงสัย?</div>
+  <div class="faq">
+    <div class="fq"><div class="fq-q" id="fq1q">ทำไมต้องมีค่าตั้งค่าครั้งแรก?</div><div class="fq-a" id="fq1a">เพราะเราตั้งค่าระบบให้ตรงกับธุรกิจของคุณโดยเฉพาะ ทีมงานใช้เวลา 1-2 วันในการติดตั้ง ทดสอบ และปรับแต่ง</div></div>
+    <div class="fq"><div class="fq-q" id="fq2q">ต้องติดตั้งอะไรเพิ่มไหม?</div><div class="fq-a" id="fq2a">ไม่ต้องเลย ทำงานผ่าน LINE ที่มีอยู่แล้ว ทีมงานจัดการทุกอย่างให้</div></div>
+    <div class="fq"><div class="fq-q" id="fq3q">ข้อมูลในกลุ่มปลอดภัยไหม?</div><div class="fq-a" id="fq3a">ข้อมูลถูกประมวลผลเพื่อแจ้งเตือนเจ้าของร้านเท่านั้น ไม่มีการเก็บข้อความส่วนตัว</div></div>
+    <div class="fq"><div class="fq-q" id="fq4q">ยกเลิกได้ตอนไหน?</div><div class="fq-a" id="fq4a">ยกเลิกได้ทุกเมื่อ ไม่มีสัญญาผูกมัด ไม่มีค่าปรับ แจ้งล่วงหน้า 1 เดือน</div></div>
+  </div>
+</section>
+
+<section class="cta-s">
+  <h2 class="cta-t" id="cta-title">พร้อมให้ AI<br>ดูแลแทนคุณ?</h2>
+  <p class="cta-sub" id="cta-sub">ปรึกษาฟรี ไม่มีข้อผูกมัด ทีมงานตอบภายใน 24 ชม.</p>
+  <a href="https://line.me/R/ti/p/@306bqpwf" class="btn-p" id="cta-btn" style="font-size:1rem;padding:.9rem 2.2rem;display:inline-flex">ติดต่อ NotiMate ↗</a>
+  <p style="margin-top:1.5rem;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--muted)">LINE: @306bqpwf</p>
+</section>
+
+<footer>
+  <div class="fi">
+    <div class="fl">Noti<span>Mate</span></div>
+    <div class="fc2" id="footer-copy">© 2025 NotiMate · AI ดูแลธุรกิจแทนคุณ</div>
+    <div class="fc2" style="font-family:'IBM Plex Mono',monospace">@306bqpwf</div>
+  </div>
+</footer>
+
+<script>
+const T={
+th:{badge:'AI สำหรับธุรกิจไทย',heroTitle:'ไม่ต้องอ่าน<br>ทุกข้อความ<br><span class="g">NotiMate ทำแทนคุณ</span>',heroSub:'ระบบ AI ที่คอยติดตามแชทกลุ่มพนักงาน LINE ของคุณ 24/7 แจ้งเฉพาะสิ่งสำคัญ — ไม่ต้องพลาดอะไรอีกแล้ว',btnStart:'เริ่มใช้งาน ↗',btnPrice:'ดูราคา',navCta:'ทดลองวันนี้ →',chat1:'น้ำตาลทรายหมดแล้ว — พนักงานขอสั่งเพิ่ม 5 กิโล',chat2:'รายจ่ายวันนี้: ฿2,450 (วัตถุดิบ + แพ็คเกจ)',chat3:'✅ รับทราบ สั่งแล้ว',chat4:'เครื่องทำกาแฟเสียครับ พนักงานรอคำสั่ง',chat5:'📞 โทรหาช่างทันที',howLbl:'วิธีการทำงาน',howTitle:'ตั้งค่าใน 5 นาที',howSub:'ทำงานบน LINE ที่มีอยู่แล้ว ไม่ต้องติดตั้งแอปเพิ่ม',s1t:'เพิ่มบอทเข้ากลุ่ม',s1d:'เพิ่ม NotiMate เข้ากลุ่ม LINE พนักงานที่มีอยู่ ใช้เวลา 1 นาที',s2t:'ตั้งค่าร่วมกัน',s2d:'ทีมงานช่วยตั้งค่าให้ตรงกับธุรกิจของคุณ บอกว่าอะไรคือ "สำคัญ"',s3t:'AI เริ่มทำงาน',s3d:'NotiMate วิเคราะห์ทุกข้อความ แยกแยะสิ่งที่ต้องการความสนใจ',s4t:'รับแจ้งเตือน',s4d:'คุณได้รับเฉพาะข้อความสำคัญ — คำสั่งซื้อ ปัญหา ยอดเงิน',featLbl:'ฟีเจอร์',featTitle:'ครบ ในที่เดียว',f1t:'🔔 แจ้งเตือนอัจฉริยะ',f1d:'AI วิเคราะห์ทุกข้อความ แจ้งเฉพาะสิ่งที่สำคัญ ไม่มี spam',f2t:'📸 สแกนใบเสร็จ',f2d:'ถ่ายรูปใบเสร็จ AI อ่านและบันทึกรายจ่ายเข้า Google Sheets อัตโนมัติ',f3t:'📦 ติดตามสต็อก',f3d:'พนักงานแจ้งสินค้าหมด บอทบันทึกและแจ้งเตือนให้สั่งซื้อโดยอัตโนมัติ',f4t:'💰 สรุปรายจ่าย',f4d:'รายงานรายจ่ายประจำวันส่งตรงมาที่ LINE ของคุณทุกเช้า',f5t:'⚠️ แจ้งเหตุฉุกเฉิน',f5d:'เครื่องเสีย พนักงานขาด ปัญหาลูกค้า — แจ้งคุณทันที',f6t:'📊 Google Sheets',f6d:'ข้อมูลทั้งหมดเข้า Google Sheets อัตโนมัติ แยกชีตตามประเภท',priceLbl:'ราคา',priceTitle:'ชัดเจน ไม่มีซ่อน',priceSub:'ค่าตั้งค่าครั้งเดียว + ค่าสมาชิกรายเดือน ยกเลิกได้ทุกเมื่อ',setupLbl:'ค่าตั้งค่าครั้งเดียว',setupNote1:'รวมติดตั้ง + ตั้งค่า + ทดสอบ',setupNote2:'รวมติดตั้ง + ตั้งค่า custom + ทดสอบ',setupNote3:'รวม custom setup + integration',subLbl:'/เดือน',popularBadge:'ยอดนิยม',p1period:'สำหรับร้านเดี่ยว 1 กลุ่ม LINE',p2period:'สำหรับร้านที่ต้องการครบ 3 กลุ่ม',p3period:'สำหรับหลายสาขา ไม่จำกัดกลุ่ม',p1f1:'1 กลุ่ม LINE',p1f2:'แจ้งเตือนอัจฉริยะ',p1f3:'สแกนใบเสร็จ',p1f4:'สรุปรายจ่ายรายวัน',p1f5:'Google Sheets 1 ชีต',p1f6:'support ทาง LINE',p2f1:'3 กลุ่ม LINE',p2f2:'AI วิเคราะห์ขั้นสูง',p2f3:'สแกนใบเสร็จ + ใบส่งของ',p2f4:'สรุปรายจ่าย + สต็อก',p2f5:'Google Sheets ครบชุด',p2f6:'รายงานรายสัปดาห์',p2f7:'priority support 24/7',p3f1:'ไม่จำกัดกลุ่ม LINE',p3f2:'หลายสาขา',p3f3:'Custom AI สำหรับธุรกิจ',p3f4:'Dashboard + รายงาน',p3f5:'API integration',p3f6:'Account manager ส่วนตัว',pbtn1:'สอบถามเพิ่มเติม',pbtn2:'เริ่มใช้งาน',pbtn3:'ติดต่อทีมงาน',ob1t:'🛠 ค่าตั้งค่าครั้งเดียวรวมอะไรบ้าง?',ob1l1:'เพิ่มบอทเข้ากลุ่ม LINE และตั้งค่า webhook',ob1l2:'ตั้งค่า AI ให้ตรงกับธุรกิจของคุณ',ob1l3:'เชื่อมต่อ Google Sheets ตามรูปแบบที่ต้องการ',ob1l4:'ทดสอบและปรับแต่งจนพอใจ',ob1l5:'อบรมการใช้งานเบื้องต้น',ob2t:'📅 ระยะเวลาติดตั้ง',ob2l1:'วันที่ 1: รับข้อมูล + ตั้งค่าระบบ',ob2l2:'วันที่ 2: ทดสอบร่วมกัน + ปรับแต่ง',ob2l3:'หลังจากนั้น: ใช้งานได้เลย',ob2l4:'มีปัญหา: ติดต่อได้ตลอด',faqLbl:'คำถามที่พบบ่อย',faqTitle:'มีข้อสงสัย?',fq1q:'ทำไมต้องมีค่าตั้งค่าครั้งแรก?',fq1a:'เพราะเราตั้งค่าระบบให้ตรงกับธุรกิจของคุณโดยเฉพาะ ทีมงานใช้เวลา 1-2 วันในการติดตั้ง ทดสอบ และปรับแต่ง',fq2q:'ต้องติดตั้งอะไรเพิ่มไหม?',fq2a:'ไม่ต้องเลย ทำงานผ่าน LINE ที่มีอยู่แล้ว ทีมงานจัดการทุกอย่างให้',fq3q:'ข้อมูลในกลุ่มปลอดภัยไหม?',fq3a:'ข้อมูลถูกประมวลผลเพื่อแจ้งเตือนเจ้าของร้านเท่านั้น ไม่มีการเก็บข้อความส่วนตัว',fq4q:'ยกเลิกได้ตอนไหน?',fq4a:'ยกเลิกได้ทุกเมื่อ ไม่มีสัญญาผูกมัด ไม่มีค่าปรับ แจ้งล่วงหน้า 1 เดือน',ctaTitle:'พร้อมให้ AI<br>ดูแลแทนคุณ?',ctaSub:'ปรึกษาฟรี ไม่มีข้อผูกมัด ทีมงานตอบภายใน 24 ชม.',ctaBtn:'ติดต่อ NotiMate ↗',footerCopy:'© 2025 NotiMate · AI ดูแลธุรกิจแทนคุณ'},
+en:{badge:'AI for Thai Business',heroTitle:'Stop reading<br>every message.<br><span class="g">NotiMate does it for you.</span>',heroSub:'AI that monitors your LINE staff group chats 24/7 and alerts you only about what matters — never miss anything important again.',btnStart:'Get Started ↗',btnPrice:'See Pricing',navCta:'Try Today →',chat1:'Sugar is running out — staff requesting 5kg reorder',chat2:"Today's expenses: ฿2,450 (ingredients + packaging)",chat3:'✅ Got it, ordered',chat4:'Coffee machine broken — staff awaiting instructions',chat5:'📞 Call technician now',howLbl:'How It Works',howTitle:'Set up in 5 minutes',howSub:'Works on your existing LINE — no extra apps needed',s1t:'Add bot to group',s1d:'Add NotiMate to your existing LINE staff group. Takes 1 minute.',s2t:'Configure together',s2d:'Our team configures it for your business — you define what "important" means.',s3t:'AI starts working',s3d:'NotiMate analyzes every message, identifying what needs your attention.',s4t:'Receive alerts',s4d:'You only get what matters — orders, problems, expenses.',featLbl:'Features',featTitle:'Everything in one place',f1t:'🔔 Smart Alerts',f1d:'AI analyzes every message and notifies you only about what matters. No spam.',f2t:'📸 Receipt Scanning',f2d:'Photo a receipt — AI reads and logs the expense to Google Sheets automatically.',f3t:'📦 Stock Tracking',f3d:'Staff reports low stock — bot logs it and alerts you to reorder automatically.',f4t:'💰 Expense Summary',f4d:'Daily expense report sent directly to your LINE every morning.',f5t:'⚠️ Emergency Alerts',f5d:'Equipment breakdown, absent staff, customer issues — notified instantly.',f6t:'📊 Google Sheets',f6d:'All data goes to Google Sheets automatically, organized by category.',priceLbl:'Pricing',priceTitle:'Clear. No surprises.',priceSub:'One-time setup fee + monthly subscription. Cancel anytime.',setupLbl:'One-time setup fee',setupNote1:'Includes install + configure + test',setupNote2:'Includes install + custom config + test',setupNote3:'Includes custom setup + integration',subLbl:'/month',popularBadge:'Most Popular',p1period:'For single location, 1 LINE group',p2period:'For growing business, 3 LINE groups',p3period:'For multi-branch, unlimited groups',p1f1:'1 LINE group',p1f2:'Smart alerts',p1f3:'Receipt scanning',p1f4:'Daily expense summary',p1f5:'Google Sheets (1 sheet)',p1f6:'LINE support',p2f1:'3 LINE groups',p2f2:'Advanced AI analysis',p2f3:'Receipt + invoice scanning',p2f4:'Expense + stock tracking',p2f5:'Full Google Sheets suite',p2f6:'Weekly reports',p2f7:'Priority support 24/7',p3f1:'Unlimited LINE groups',p3f2:'Multi-branch support',p3f3:'Custom AI for your business',p3f4:'Dashboard + reports',p3f5:'API integration',p3f6:'Dedicated account manager',pbtn1:'Ask a question',pbtn2:'Get Started',pbtn3:'Contact Team',ob1t:'🛠 What does setup include?',ob1l1:'Add bot to LINE groups and configure webhook',ob1l2:'Configure AI specifically for your business',ob1l3:'Connect Google Sheets in your format',ob1l4:'Test and fine-tune until satisfied',ob1l5:'Basic usage training',ob2t:'📅 Installation timeline',ob2l1:'Day 1: Collect info + system setup',ob2l2:'Day 2: Joint testing + adjustments',ob2l3:'After that: ready to use',ob2l4:'Any issues: contact us anytime',faqLbl:'FAQ',faqTitle:'Questions?',fq1q:'Why is there a setup fee?',fq1a:'Because we configure the system specifically for your business. Our team spends 1-2 days installing, testing, and tuning it for your shop.',fq2q:'Do I need to install anything?',fq2a:'Not at all. Works through your existing LINE. Our team handles everything.',fq3q:'Is the group data safe?',fq3a:'Data is processed only to alert the shop owner. No private messages are stored or shared.',fq4q:'When can I cancel?',fq4a:'Cancel anytime. No contracts, no penalties. Just 1 month notice.',ctaTitle:'Ready for AI to<br>run your business?',ctaSub:'Free consultation. No commitment. Team responds within 24h.',ctaBtn:'Contact NotiMate ↗',footerCopy:'© 2025 NotiMate · AI for your business'},
+ru:{badge:'AI для бизнеса в Таиланде',heroTitle:'Перестаньте читать<br>каждое сообщение.<br><span class="g">NotiMate сделает это за Вас.</span>',heroSub:'AI мониторит LINE-чаты сотрудников 24/7 и уведомляет только о важном — никогда больше не пропустите ничего критичного.',btnStart:'Начать ↗',btnPrice:'Тарифы',navCta:'Попробовать →',chat1:'Сахар заканчивается — сотрудники просят заказать 5 кг',chat2:'Расходы за сегодня: ฿2,450 (ингредиенты + упаковка)',chat3:'✅ Принято, заказал',chat4:'Кофемашина сломалась — сотрудники ждут команды',chat5:'📞 Вызову мастера сейчас',howLbl:'Как это работает',howTitle:'Настройка за 5 минут',howSub:'Работает на существующем LINE — не нужно устанавливать ничего дополнительно',s1t:'Добавить бота в группу',s1d:'Добавьте NotiMate в существующую LINE-группу сотрудников. Занимает 1 минуту.',s2t:'Настраиваем вместе',s2d:'Команда помогает настроить под Ваш бизнес — Вы определяете что считать "важным".',s3t:'AI начинает работу',s3d:'NotiMate анализирует каждое сообщение, определяя что требует Вашего внимания.',s4t:'Получаете уведомления',s4d:'Вы получаете только то что важно — заказы, проблемы, расходы.',featLbl:'Возможности',featTitle:'Всё в одном месте',f1t:'🔔 Умные уведомления',f1d:'AI анализирует каждое сообщение и уведомляет только о важном. Без спама.',f2t:'📸 Сканирование чеков',f2d:'Сфотографируйте чек — AI считает его и запишет расход в Google Sheets автоматически.',f3t:'📦 Учёт склада',f3d:'Сотрудник сообщает о нехватке — бот записывает и напоминает сделать заказ.',f4t:'💰 Сводка расходов',f4d:'Ежедневный отчёт о расходах отправляется в Ваш LINE каждое утро.',f5t:'⚠️ Экстренные оповещения',f5d:'Сломалось оборудование, не вышел сотрудник, проблема с клиентом — узнаёте мгновенно.',f6t:'📊 Google Sheets',f6d:'Все данные автоматически попадают в Google Sheets, распределённые по категориям.',priceLbl:'Тарифы',priceTitle:'Прозрачно. Без скрытых платежей.',priceSub:'Разовая оплата настройки + ежемесячная подписка. Отмена в любой момент.',setupLbl:'Разовая настройка',setupNote1:'Установка + настройка + тест',setupNote2:'Установка + кастомная настройка + тест',setupNote3:'Custom setup + интеграция',subLbl:'/мес',popularBadge:'Популярный',p1period:'Для одной точки, 1 группа LINE',p2period:'Для растущего бизнеса, 3 группы',p3period:'Для нескольких точек, без лимитов',p1f1:'1 группа LINE',p1f2:'Умные уведомления',p1f3:'Сканирование чеков',p1f4:'Ежедневная сводка расходов',p1f5:'Google Sheets (1 лист)',p1f6:'Поддержка через LINE',p2f1:'3 группы LINE',p2f2:'Расширенный AI анализ',p2f3:'Чеки + накладные',p2f4:'Расходы + учёт склада',p2f5:'Полный набор Google Sheets',p2f6:'Еженедельные отчёты',p2f7:'Приоритетная поддержка 24/7',p3f1:'Без лимита групп LINE',p3f2:'Несколько точек',p3f3:'Custom AI под Ваш бизнес',p3f4:'Дашборд + отчёты',p3f5:'API интеграция',p3f6:'Персональный менеджер',pbtn1:'Задать вопрос',pbtn2:'Начать работу',pbtn3:'Связаться с командой',ob1t:'🛠 Что входит в настройку?',ob1l1:'Добавление бота в группы LINE и настройка webhook',ob1l2:'Настройка AI под специфику Вашего бизнеса',ob1l3:'Подключение Google Sheets в нужном формате',ob1l4:'Тестирование и доработка до удовлетворения',ob1l5:'Базовое обучение по использованию',ob2t:'📅 Сроки установки',ob2l1:'День 1: Сбор данных + настройка системы',ob2l2:'День 2: Совместное тестирование + правки',ob2l3:'Дальше: можно использовать',ob2l4:'Проблема: обращайтесь в любой момент',faqLbl:'Частые вопросы',faqTitle:'Есть вопросы?',fq1q:'Зачем разовая оплата настройки?',fq1a:'Потому что мы настраиваем систему именно под Ваш бизнес. Команда тратит 1-2 дня на установку, тестирование и доработку.',fq2q:'Нужно что-то устанавливать?',fq2a:'Нет. Работает через существующий LINE. Команда берёт всё на себя.',fq3q:'Данные в группе в безопасности?',fq3a:'Данные обрабатываются только для оповещения владельца. Личные сообщения не хранятся.',fq4q:'Когда можно отменить?',fq4a:'В любой момент. Без договоров и штрафов. Уведомите за 1 месяц.',ctaTitle:'Готовы отдать бизнес<br>под управление AI?',ctaSub:'Бесплатная консультация. Без обязательств. Ответим в течение 24 часов.',ctaBtn:'Написать в NotiMate ↗',footerCopy:'© 2025 NotiMate · AI для Вашего бизнеса'}
+};
+function setLang(l){
+  const t=T[l];
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+  const s=(id,v,h)=>{const e=document.getElementById(id);if(e){h?e.innerHTML=v:e.textContent=v;}};
+  s('badge-text',t.badge);s('hero-title',t.heroTitle,1);s('hero-sub',t.heroSub);
+  s('btn-start',t.btnStart);s('btn-price',t.btnPrice);s('nav-cta-btn',t.navCta);
+  ['1','2','3','4','5'].forEach(n=>{document.querySelectorAll('.chat'+n).forEach(e=>e.textContent=t['chat'+n]);});
+  s('how-lbl',t.howLbl);s('how-title',t.howTitle);s('how-sub',t.howSub);
+  [1,2,3,4].forEach(i=>{s('s'+i+'t',t['s'+i+'t']);s('s'+i+'d',t['s'+i+'d']);});
+  s('feat-lbl',t.featLbl);s('feat-title',t.featTitle);
+  [1,2,3,4,5,6].forEach(i=>{s('f'+i+'t',t['f'+i+'t']);s('f'+i+'d',t['f'+i+'d']);});
+  s('price-lbl',t.priceLbl);s('price-title',t.priceTitle);s('price-sub',t.priceSub);
+  s('setup-lbl',t.setupLbl);s('setup-lbl2',t.setupLbl);s('setup-lbl3',t.setupLbl);
+  [1,2,3].forEach(i=>{s('setup-note'+i,t['setupNote'+i]);s('sub-lbl'+i,t.setupLbl);s('per-mo'+i,t.subLbl);});
+  s('popular-badge',t.popularBadge);
+  s('p1period',t.p1period);s('p2period',t.p2period);s('p3period',t.p3period);
+  [1,2,3,4,5,6].forEach(i=>{s('p1f'+i,t['p1f'+i]);s('p2f'+i,t['p2f'+i]);s('p3f'+i,t['p3f'+i]);});
+  s('p2f7',t.p2f7);
+  s('pbtn1',t.pbtn1);s('pbtn2',t.pbtn2);s('pbtn3',t.pbtn3);
+  s('ob1t',t.ob1t);s('ob2t',t.ob2t);
+  [1,2,3,4,5].forEach(i=>s('ob1l'+i,t['ob1l'+i]));
+  [1,2,3,4].forEach(i=>s('ob2l'+i,t['ob2l'+i]));
+  s('faq-lbl',t.faqLbl);s('faq-title',t.faqTitle);
+  [1,2,3,4].forEach(i=>{s('fq'+i+'q',t['fq'+i+'q']);s('fq'+i+'a',t['fq'+i+'a']);});
+  s('cta-title',t.ctaTitle,1);s('cta-sub',t.ctaSub);s('cta-btn',t.ctaBtn);
+  s('footer-copy',t.footerCopy);
+}
+</script>
+</body>
+</html>
