@@ -53,6 +53,7 @@ h1 .g{color:var(--green)}
 .fc:hover{border-color:rgba(6,199,85,.25)}
 .fc.hot{border-color:rgba(6,199,85,.3);background:rgba(6,199,85,.04)}
 .ftag{display:inline-block;background:rgba(6,199,85,.12);color:var(--green);font-size:.62rem;font-weight:700;padding:.18rem .55rem;border-radius:4px;margin-bottom:.65rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.5px}
+.ftag.new{background:rgba(255,180,0,.12);color:#ffb400}
 .ftit{font-size:.95rem;font-weight:700;margin-bottom:.35rem}
 .fdesc{font-size:.82rem;color:var(--muted);line-height:1.75}
 .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:2.5rem}
@@ -74,7 +75,7 @@ h1 .g{color:var(--green)}
 .pbtn{display:block;padding:.7rem;border-radius:8px;font-weight:700;font-size:.84rem;border:1px solid var(--border);color:var(--text);text-align:center}
 .pc.pop .pbtn{background:var(--green);color:#000;border-color:var(--green)}
 .onboard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-@media(max-width:580px){.onboard{grid-template-columns:1fr}.nav-right{gap:.6rem}}
+@media(max-width:580px){.onboard{grid-template-columns:1fr}.nav-right{gap:.6rem}.quiz-wrap{padding:1.5rem 1rem}}
 .ob-title{font-size:1rem;font-weight:700;margin-bottom:.4rem}
 .ob-list{list-style:none;margin-top:.75rem}
 .ob-list li{font-size:.82rem;color:var(--muted);padding:.27rem 0;display:flex;gap:.45rem}
@@ -90,6 +91,52 @@ footer{padding:1.6rem 2rem;border-top:1px solid var(--border)}
 .fi{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem}
 .fl{font-weight:700;font-size:.95rem}.fl span{color:var(--green)}
 .fc2{font-size:.72rem;color:var(--muted)}
+
+/* ── Quiz section ── */
+.quiz-section{background:linear-gradient(to bottom,var(--bg),rgba(6,199,85,.03),var(--bg));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.quiz-wrap{max-width:680px;margin:0 auto;padding:2rem 0}
+.qprog-track{height:2px;background:var(--border);border-radius:99px;margin-bottom:2.5rem;overflow:hidden}
+.qprog-fill{height:100%;background:var(--green);border-radius:99px;transition:width .4s ease}
+.qstep{display:none}.qstep.active{display:block}
+.qstep-lbl{font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
+.qstep-title{font-size:1.3rem;font-weight:700;letter-spacing:-.5px;margin-bottom:1.4rem}
+.qopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.5rem}
+.qopt{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-align:left;cursor:pointer;font-size:.85rem;color:var(--text);font-family:'Sarabun',sans-serif;transition:all .15s;display:flex;align-items:center;gap:8px}
+.qopt:hover{border-color:#444;background:var(--bg3)}
+.qopt.sel{border-color:var(--green);background:rgba(6,199,85,.07);color:var(--green)}
+.qopt-ico{font-size:1.1rem;flex-shrink:0}
+.qcheck-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.5rem}
+.qcheck{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-size:.83rem;color:var(--text);font-family:'Sarabun',sans-serif;transition:all .15s;user-select:none;background:var(--bg2)}
+.qcheck:hover{border-color:#444}
+.qcheck.on{border-color:var(--green);background:rgba(6,199,85,.07);color:var(--green)}
+.qcb{width:15px;height:15px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px}
+.qcheck.on .qcb{background:var(--green);border-color:var(--green);color:#000}
+.qhint{font-size:.75rem;color:var(--muted);margin-bottom:.9rem}
+.qnav{display:flex;align-items:center;gap:10px;margin-top:.5rem}
+.qbtn-next{background:var(--green);color:#000;border:none;border-radius:8px;padding:10px 24px;font-size:.875rem;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:opacity .15s}
+.qbtn-next:disabled{opacity:.35;cursor:default}
+.qbtn-next:hover:not(:disabled){opacity:.85}
+.qbtn-back{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:10px 18px;font-size:.875rem;cursor:pointer;font-family:'Sarabun',sans-serif;transition:background .15s}
+.qbtn-back:hover{background:var(--bg3)}
+/* Result */
+.qresult-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1.2rem}
+.qresult-box h3{font-size:.65rem;font-family:'IBM Plex Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:.9rem}
+.qrtable{width:100%;border-collapse:collapse;font-size:.83rem}
+.qrtable tr{border-bottom:1px solid var(--border)}
+.qrtable tr:last-child{border-bottom:none}
+.qrtable td{padding:7px 0}
+.qrtable td:first-child{color:var(--muted);width:46%}
+.qrtable td:last-child{color:var(--text);font-weight:600}
+.tariff-pill{display:inline-block;background:rgba(6,199,85,.12);color:var(--green);font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:4px;font-family:'IBM Plex Mono',monospace;margin-left:6px}
+.qcollect{border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin-bottom:1.2rem;background:var(--bg)}
+.qcollect h3{font-size:.65rem;font-family:'IBM Plex Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.qci{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:.82rem}
+.qci:last-child{border-bottom:none}
+.qci-lbl{color:var(--muted);min-width:150px;flex-shrink:0;padding-top:1px}
+.qci-how{color:var(--text);line-height:1.55;font-size:.8rem}
+.qsend{width:100%;background:var(--green);color:#000;border:none;border-radius:8px;padding:13px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Sarabun',sans-serif;transition:opacity .15s;margin-top:.5rem}
+.qsend:hover{opacity:.88}
+.qsend-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:.6rem}
 </style>
 </head>
 <body>
@@ -110,7 +157,7 @@ footer{padding:1.6rem 2rem;border-top:1px solid var(--border)}
   <h1 id="hero-title">ไม่ต้องอ่าน<br>ทุกข้อความ<br><span class="g">NotiMate ทำแทนคุณ</span></h1>
   <p class="sub" id="hero-sub">ระบบ AI ที่คอยติดตามแชทกลุ่มพนักงาน LINE ของคุณ 24/7 แจ้งเฉพาะสิ่งสำคัญ — ไม่ต้องพลาดอะไรอีกแล้ว</p>
   <div class="hero-btns">
-    <a href="https://line.me/R/ti/p/@306bqpwf" class="btn-p" id="btn-start">เริ่มใช้งาน ↗</a>
+    <a href="#quiz" class="btn-p" id="btn-start">เริ่มใช้งาน ↗</a>
     <a href="#pricing" class="btn-s" id="btn-price">ดูราคา</a>
   </div>
   <div class="lineid">LINE OA: @306bqpwf</div>
@@ -149,6 +196,117 @@ footer{padding:1.6rem 2rem;border-top:1px solid var(--border)}
     <div class="fc"><div class="ftit" id="f4t">💰 สรุปรายจ่าย</div><div class="fdesc" id="f4d">รายงานรายจ่ายประจำวันส่งตรงมาที่ LINE ของคุณทุกเช้า</div></div>
     <div class="fc"><div class="ftit" id="f5t">⚠️ แจ้งเหตุฉุกเฉิน</div><div class="fdesc" id="f5d">เครื่องเสีย พนักงานขาด ปัญหาลูกค้า — แจ้งคุณทันที</div></div>
     <div class="fc"><div class="ftit" id="f6t">📊 Google Sheets</div><div class="fdesc" id="f6d">ข้อมูลทั้งหมดเข้า Google Sheets อัตโนมัติ แยกชีตตามประเภท</div></div>
+    <div class="fc"><div class="ftag new" id="f7tag">NEW</div><div class="ftit" id="f7t">🧮 สรุปรายสัปดาห์</div><div class="fdesc" id="f7d">สรุปยอดรายรับ-รายจ่ายทุกสัปดาห์อัตโนมัติ เห็นภาพรวมธุรกิจใน 3 บรรทัด</div></div>
+    <div class="fc"><div class="ftag new" id="f8tag">NEW</div><div class="ftit" id="f8t">📋 ระบบงานและการแจ้งเตือน</div><div class="fdesc" id="f8d">มอบหมายงานผ่านแชท บอทติดตามและเตือนซ้ำถ้ายังไม่เสร็จ</div></div>
+    <div class="fc"><div class="ftag new" id="f9tag">NEW</div><div class="ftit" id="f9t">📈 ตรวจราคาจากซัพพลายเออร์</div><div class="fdesc" id="f9d">AI จำราคาสินค้าจากใบเสร็จ แจ้งเตือนทันทีเมื่อซัพพลายเออร์ขึ้นราคา</div></div>
+  </div>
+</section>
+
+<div class="divl"></div>
+
+<!-- ── QUIZ SECTION ── -->
+<section class="quiz-section" id="quiz">
+  <div class="sec" style="padding-top:4rem;padding-bottom:4rem">
+    <div class="lbl" id="quiz-lbl">เริ่มต้นใช้งาน</div>
+    <div class="stitle" id="quiz-title">เหมาะกับธุรกิจของคุณไหม?</div>
+    <div class="ssub" id="quiz-sub" style="margin-bottom:2.5rem">ตอบ 4 ข้อ รู้เลยว่า NotiMate ช่วยคุณได้อย่างไร และทีมงานจะติดต่อกลับ</div>
+
+    <div class="quiz-wrap">
+      <div class="qprog-track"><div class="qprog-fill" id="qprog" style="width:20%"></div></div>
+
+      <!-- Step 1 -->
+      <div class="qstep active" id="qstep1">
+        <p class="qstep-lbl" id="qs1lbl">ขั้นตอน 1 จาก 4</p>
+        <p class="qstep-title" id="qs1title">ธุรกิจของคุณคืออะไร?</p>
+        <div class="qopts">
+          <button class="qopt" data-val="cafe" onclick="qSel(this,'biz')"><span class="qopt-ico">☕</span><span id="qo1a">คาเฟ่ / เบเกอรี่</span></button>
+          <button class="qopt" data-val="restaurant" onclick="qSel(this,'biz')"><span class="qopt-ico">🍽</span><span id="qo1b">ร้านอาหาร</span></button>
+          <button class="qopt" data-val="retail" onclick="qSel(this,'biz')"><span class="qopt-ico">🛍</span><span id="qo1c">ร้านค้า / รีเทล</span></button>
+          <button class="qopt" data-val="service" onclick="qSel(this,'biz')"><span class="qopt-ico">✂</span><span id="qo1d">บริการ (ร้านเสริมสวย ฯลฯ)</span></button>
+          <button class="qopt" data-val="other" onclick="qSel(this,'biz')"><span class="qopt-ico">📦</span><span id="qo1e">อื่นๆ</span></button>
+        </div>
+        <div class="qnav">
+          <button class="qbtn-next" id="qnext1" onclick="qGo(2)" disabled id="qnextbtn1">ถัดไป</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="qstep" id="qstep2">
+        <p class="qstep-lbl" id="qs2lbl">ขั้นตอน 2 จาก 4</p>
+        <p class="qstep-title" id="qs2title">มีกลุ่ม LINE พนักงานกี่กลุ่ม?</p>
+        <div class="qopts">
+          <button class="qopt" data-val="1" onclick="qSel(this,'groups')"><span class="qopt-ico">1️⃣</span><span id="qo2a">1 กลุ่ม</span></button>
+          <button class="qopt" data-val="2-3" onclick="qSel(this,'groups')"><span class="qopt-ico">2️⃣</span><span id="qo2b">2–3 กลุ่ม</span></button>
+          <button class="qopt" data-val="4+" onclick="qSel(this,'groups')"><span class="qopt-ico">🔢</span><span id="qo2c">4 กลุ่มขึ้นไป</span></button>
+        </div>
+        <div class="qnav">
+          <button class="qbtn-back" onclick="qGo(1)" id="qback2">ย้อนกลับ</button>
+          <button class="qbtn-next" id="qnext2" onclick="qGo(3)" disabled>ถัดไป</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="qstep" id="qstep3">
+        <p class="qstep-lbl" id="qs3lbl">ขั้นตอน 3 จาก 4</p>
+        <p class="qstep-title" id="qs3title">อยากรู้เรื่องอะไรบ้าง?</p>
+        <p class="qhint" id="qs3hint">เลือกได้หลายข้อ</p>
+        <div class="qcheck-grid">
+          <div class="qcheck" onclick="qToggle(this,'n_stock')"><div class="qcb">✓</div><span id="qn1">📦 สต็อกและการสั่งซื้อ</span></div>
+          <div class="qcheck" onclick="qToggle(this,'n_money')"><div class="qcb">✓</div><span id="qn2">💰 รายรับ-รายจ่าย</span></div>
+          <div class="qcheck" onclick="qToggle(this,'n_problems')"><div class="qcb">✓</div><span id="qn3">⚠️ ปัญหาและเหตุฉุกเฉิน</span></div>
+          <div class="qcheck" onclick="qToggle(this,'n_staff')"><div class="qcb">✓</div><span id="qn4">👥 พนักงานและกะงาน</span></div>
+          <div class="qcheck" onclick="qToggle(this,'n_receipts')"><div class="qcb">✓</div><span id="qn5">📸 ใบเสร็จ → บันทึกอัตโนมัติ</span></div>
+          <div class="qcheck" onclick="qToggle(this,'n_tasks')"><div class="qcb">✓</div><span id="qn6">✅ งานและการติดตาม</span></div>
+        </div>
+        <div class="qnav">
+          <button class="qbtn-back" onclick="qGo(2)" id="qback3">ย้อนกลับ</button>
+          <button class="qbtn-next" id="qnext3" onclick="qGo(4)" disabled>ถัดไป</button>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="qstep" id="qstep4">
+        <p class="qstep-lbl" id="qs4lbl">ขั้นตอน 4 จาก 4</p>
+        <p class="qstep-title" id="qs4title">ต้องการรับการแจ้งเตือนภาษาอะไร?</p>
+        <div class="qopts">
+          <button class="qopt" data-val="thai" onclick="qSel(this,'lang')"><span class="qopt-ico">🇹🇭</span><span id="qo4a">ภาษาไทย</span></button>
+          <button class="qopt" data-val="english" onclick="qSel(this,'lang')"><span class="qopt-ico">🇬🇧</span><span id="qo4b">English</span></button>
+          <button class="qopt" data-val="russian" onclick="qSel(this,'lang')"><span class="qopt-ico">🇷🇺</span><span id="qo4c">Русский</span></button>
+        </div>
+        <div class="qnav">
+          <button class="qbtn-back" onclick="qGo(3)" id="qback4">ย้อนกลับ</button>
+          <button class="qbtn-next" id="qnext4" onclick="qGo(5)" disabled>ดูผลลัพธ์</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Result -->
+      <div class="qstep" id="qstep5">
+        <p class="qstep-lbl" id="qs5lbl">พร้อมแล้ว!</p>
+        <p class="qstep-title" id="qs5title">นี่คือแพ็คเกจที่เหมาะกับคุณ</p>
+
+        <div class="qresult-box">
+          <h3 id="qr-yourlbl">สรุปข้อมูลของคุณ</h3>
+          <table class="qrtable">
+            <tr><td id="qrl-biz">ประเภทธุรกิจ</td><td id="qrv-biz">—</td></tr>
+            <tr><td id="qrl-groups">จำนวนกลุ่ม</td><td id="qrv-groups">—</td></tr>
+            <tr><td id="qrl-notify">แจ้งเตือนเรื่อง</td><td id="qrv-notify">—</td></tr>
+            <tr><td id="qrl-lang">ภาษา</td><td id="qrv-lang">—</td></tr>
+            <tr><td id="qrl-tariff">แพ็คเกจแนะนำ</td><td id="qrv-tariff">—</td></tr>
+          </table>
+        </div>
+
+        <div class="qcollect">
+          <h3 id="qc-title">สิ่งที่ต้องเตรียมสำหรับการนัดหมาย</h3>
+          <div class="qci"><span class="qci-lbl" id="qcl1">ชื่อร้าน / ธุรกิจ</span><span class="qci-how" id="qch1">ชื่อที่ใช้งานจริง</span></div>
+          <div class="qci"><span class="qci-lbl" id="qcl2">LINE Official Account</span><span class="qci-how" id="qch2">ถ้ามีอยู่แล้ว — บอก ID รูปแบบ @xxxxxxx ถ้าไม่มี — สร้างด้วยกันในวันนัด</span></div>
+          <div class="qci"><span class="qci-lbl" id="qcl3">ผู้รับการแจ้งเตือน</span><span class="qci-how" id="qch3">ชื่อและ LINE ของเจ้าของหรือผู้จัดการที่จะรับข้อความ</span></div>
+          <div class="qci" id="qci-sheets" style="display:none"><span class="qci-lbl" id="qcl4">Google Account</span><span class="qci-how" id="qch4">อีเมล Google เพื่อแชร์ไฟล์บันทึกข้อมูล — เตรียมได้เลย ไม่ต้องทำอะไรเพิ่ม</span></div>
+        </div>
+
+        <button class="qsend" onclick="qSendLine()" id="qsendbtn">ส่งข้อมูลนี้ใน LINE ↗</button>
+        <p class="qsend-note" id="qsend-note">กดแล้วจะเปิด LINE พร้อมข้อความสรุป — ส่งได้เลย ทีมงานจะติดต่อกลับภายใน 24 ชม.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -191,7 +349,7 @@ footer{padding:1.6rem 2rem;border-top:1px solid var(--border)}
   <div class="onboard">
     <div>
       <div class="ob-title" id="ob1t">🛠 ค่าตั้งค่าครั้งเดียวรวมอะไรบ้าง?</div>
-      <ul class="ob-list"><li id="ob1l1">เพิ่มบอทเข้ากลุ่ม LINE และตั้งค่า webhook</li><li id="ob1l2">ตั้งค่า AI ให้ตรงกับธุรกิจของคุณ</li><li id="ob1l3">เชื่อมต่อ Google Sheets ตามรูปแบบที่ต้องการ</li><li id="ob1l4">ทดสอบและปรับแต่งจนพอใจ</li><li id="ob1l5">อบรมการใช้งานเบื้องต้น</li></ul>
+      <ul class="ob-list"><li id="ob1l1">เพิ่มบอทเข้ากลุ่ม LINE และตั้งค่าระบบ</li><li id="ob1l2">ตั้งค่า AI ให้ตรงกับธุรกิจของคุณ</li><li id="ob1l3">เชื่อมต่อ Google Sheets ตามรูปแบบที่ต้องการ</li><li id="ob1l4">ทดสอบและปรับแต่งจนพอใจ</li><li id="ob1l5">อบรมการใช้งานเบื้องต้น</li></ul>
     </div>
     <div>
       <div class="ob-title" id="ob2t">📅 ระยะเวลาติดตั้ง</div>
@@ -216,7 +374,7 @@ footer{padding:1.6rem 2rem;border-top:1px solid var(--border)}
 <section class="cta-s">
   <h2 class="cta-t" id="cta-title">พร้อมให้ AI<br>ดูแลแทนคุณ?</h2>
   <p class="cta-sub" id="cta-sub">ปรึกษาฟรี ไม่มีข้อผูกมัด ทีมงานตอบภายใน 24 ชม.</p>
-  <a href="https://line.me/R/ti/p/@306bqpwf" class="btn-p" id="cta-btn" style="font-size:1rem;padding:.9rem 2.2rem;display:inline-flex">ติดต่อ NotiMate ↗</a>
+  <a href="#quiz" class="btn-p" id="cta-btn" style="font-size:1rem;padding:.9rem 2.2rem;display:inline-flex">ลองทำแบบสอบถาม ↗</a>
   <p style="margin-top:1.5rem;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--muted)">LINE: @306bqpwf</p>
 </section>
 
@@ -229,12 +387,86 @@ footer{padding:1.6rem 2rem;border-top:1px solid var(--border)}
 </footer>
 
 <script>
+/* ── Quiz logic ── */
+const QS={biz:null,groups:null,lang:null,n_stock:false,n_money:false,n_problems:false,n_staff:false,n_receipts:false,n_tasks:false};
+const bizMap={cafe:'คาเฟ่/เบเกอรี่',restaurant:'ร้านอาหาร',retail:'ร้านค้า/รีเทล',service:'ธุรกิจบริการ',other:'อื่นๆ'};
+const bizMapEn={cafe:'Café / Bakery',restaurant:'Restaurant',retail:'Retail Shop',service:'Service Business',other:'Other'};
+const bizMapRu={cafe:'Кофейня/Пекарня',restaurant:'Ресторан',retail:'Магазин',service:'Услуги',other:'Другое'};
+const groupsMap={'1':'1 กลุ่ม','2-3':'2–3 กลุ่ม','4+':'4+ กลุ่ม'};
+const groupsMapEn={'1':'1 group','2-3':'2–3 groups','4+':'4+ groups'};
+const groupsMapRu={'1':'1 группа','2-3':'2–3 группы','4+':'4+ групп'};
+const langMap={thai:'ภาษาไทย',english:'English',russian:'Русский'};
+const notifyKeysTH={n_stock:'สต็อก',n_money:'รายรับ-รายจ่าย',n_problems:'ปัญหา/ฉุกเฉิน',n_staff:'พนักงาน',n_receipts:'ใบเสร็จ',n_tasks:'งาน'};
+const notifyKeysEN={n_stock:'Stock',n_money:'Revenue/Expenses',n_problems:'Incidents',n_staff:'Staff',n_receipts:'Receipts',n_tasks:'Tasks'};
+const notifyKeysRU={n_stock:'Склад',n_money:'Доходы/расходы',n_problems:'ЧП',n_staff:'Персонал',n_receipts:'Чеки',n_tasks:'Задачи'};
+
+let curLang='th';
+
+function qSel(el,key){
+  el.closest('.qopts').querySelectorAll('.qopt').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  QS[key]=el.dataset.val;
+  qCheckNav();
+}
+function qToggle(el,key){
+  el.classList.toggle('on');
+  QS[key]=el.classList.contains('on');
+  qCheckNav();
+}
+function qCheckNav(){
+  document.getElementById('qnext1').disabled=!QS.biz;
+  document.getElementById('qnext2').disabled=!QS.groups;
+  const anyN=['n_stock','n_money','n_problems','n_staff','n_receipts','n_tasks'].some(k=>QS[k]);
+  document.getElementById('qnext3').disabled=!anyN;
+  document.getElementById('qnext4').disabled=!QS.lang;
+}
+function qGo(n){
+  document.querySelectorAll('.qstep').forEach(s=>s.classList.remove('active'));
+  document.getElementById('qstep'+n).classList.add('active');
+  document.getElementById('qprog').style.width=(n/5*100)+'%';
+  if(n===5)qBuildResult();
+}
+function qBuildResult(){
+  const bMap=curLang==='ru'?bizMapRu:curLang==='en'?bizMapEn:bizMap;
+  const gMap=curLang==='ru'?groupsMapRu:curLang==='en'?groupsMapEn:groupsMap;
+  const nKeys=curLang==='ru'?notifyKeysRU:curLang==='en'?notifyKeysEN:notifyKeysTH;
+  document.getElementById('qrv-biz').textContent=bMap[QS.biz]||'—';
+  document.getElementById('qrv-groups').textContent=gMap[QS.groups]||'—';
+  const nl=['n_stock','n_money','n_problems','n_staff','n_receipts','n_tasks'].filter(k=>QS[k]).map(k=>nKeys[k]);
+  document.getElementById('qrv-notify').textContent=nl.join(', ')||'—';
+  document.getElementById('qrv-lang').textContent=langMap[QS.lang]||'—';
+  let tariff='Starter';
+  if(QS.groups==='4+'||nl.length>=5)tariff='Business';
+  else if(QS.groups==='2-3'||nl.length>=3||QS.n_receipts)tariff='Pro';
+  const pill=document.createElement('span');pill.className='tariff-pill';pill.textContent=tariff;
+  const td=document.getElementById('qrv-tariff');td.textContent=tariff+' ';td.appendChild(pill);
+  if(QS.n_receipts)document.getElementById('qci-sheets').style.display='flex';
+}
+function qSendLine(){
+  const bMap=curLang==='ru'?bizMapRu:curLang==='en'?bizMapEn:bizMap;
+  const gMap=curLang==='ru'?groupsMapRu:curLang==='en'?groupsMapEn:groupsMap;
+  const nKeys=curLang==='ru'?notifyKeysRU:curLang==='en'?notifyKeysEN:notifyKeysTH;
+  const nl=['n_stock','n_money','n_problems','n_staff','n_receipts','n_tasks'].filter(k=>QS[k]).map(k=>nKeys[k]);
+  let tariff='Starter';
+  if(QS.groups==='4+'||nl.length>=5)tariff='Business';
+  else if(QS.groups==='2-3'||nl.length>=3||QS.n_receipts)tariff='Pro';
+  const msg=curLang==='ru'
+    ?`📋 Анкета NotiMate\n\nБизнес: ${bMap[QS.biz]}\nГрупп LINE: ${gMap[QS.groups]}\nУведомления: ${nl.join(', ')}\nЯзык: ${langMap[QS.lang]}\nТариф: ${tariff}\n\nХочу узнать подробнее`
+    :curLang==='en'
+    ?`📋 NotiMate inquiry\n\nBusiness: ${bMap[QS.biz]}\nLINE groups: ${gMap[QS.groups]}\nAlerts for: ${nl.join(', ')}\nLanguage: ${langMap[QS.lang]}\nPlan: ${tariff}\n\nI'd like to learn more`
+    :`📋 แบบสอบถาม NotiMate\n\nธุรกิจ: ${bMap[QS.biz]}\nกลุ่ม LINE: ${gMap[QS.groups]}\nแจ้งเตือนเรื่อง: ${nl.join(', ')}\nภาษา: ${langMap[QS.lang]}\nแพ็คเกจ: ${tariff}\n\nสนใจสอบถามเพิ่มเติม`;
+  window.open('https://line.me/R/oaMessage/@306bqpwf/?'+encodeURIComponent(msg),'_blank');
+}
+
+/* ── i18n ── */
 const T={
-th:{badge:'AI สำหรับธุรกิจไทย',heroTitle:'ไม่ต้องอ่าน<br>ทุกข้อความ<br><span class="g">NotiMate ทำแทนคุณ</span>',heroSub:'ระบบ AI ที่คอยติดตามแชทกลุ่มพนักงาน LINE ของคุณ 24/7 แจ้งเฉพาะสิ่งสำคัญ — ไม่ต้องพลาดอะไรอีกแล้ว',btnStart:'เริ่มใช้งาน ↗',btnPrice:'ดูราคา',navCta:'ทดลองวันนี้ →',chat1:'น้ำตาลทรายหมดแล้ว — พนักงานขอสั่งเพิ่ม 5 กิโล',chat2:'รายจ่ายวันนี้: ฿2,450 (วัตถุดิบ + แพ็คเกจ)',chat3:'✅ รับทราบ สั่งแล้ว',chat4:'เครื่องทำกาแฟเสียครับ พนักงานรอคำสั่ง',chat5:'📞 โทรหาช่างทันที',howLbl:'วิธีการทำงาน',howTitle:'ตั้งค่าใน 5 นาที',howSub:'ทำงานบน LINE ที่มีอยู่แล้ว ไม่ต้องติดตั้งแอปเพิ่ม',s1t:'เพิ่มบอทเข้ากลุ่ม',s1d:'เพิ่ม NotiMate เข้ากลุ่ม LINE พนักงานที่มีอยู่ ใช้เวลา 1 นาที',s2t:'ตั้งค่าร่วมกัน',s2d:'ทีมงานช่วยตั้งค่าให้ตรงกับธุรกิจของคุณ บอกว่าอะไรคือ "สำคัญ"',s3t:'AI เริ่มทำงาน',s3d:'NotiMate วิเคราะห์ทุกข้อความ แยกแยะสิ่งที่ต้องการความสนใจ',s4t:'รับแจ้งเตือน',s4d:'คุณได้รับเฉพาะข้อความสำคัญ — คำสั่งซื้อ ปัญหา ยอดเงิน',featLbl:'ฟีเจอร์',featTitle:'ครบ ในที่เดียว',f1t:'🔔 แจ้งเตือนอัจฉริยะ',f1d:'AI วิเคราะห์ทุกข้อความ แจ้งเฉพาะสิ่งที่สำคัญ ไม่มี spam',f2t:'📸 สแกนใบเสร็จ',f2d:'ถ่ายรูปใบเสร็จ AI อ่านและบันทึกรายจ่ายเข้า Google Sheets อัตโนมัติ',f3t:'📦 ติดตามสต็อก',f3d:'พนักงานแจ้งสินค้าหมด บอทบันทึกและแจ้งเตือนให้สั่งซื้อโดยอัตโนมัติ',f4t:'💰 สรุปรายจ่าย',f4d:'รายงานรายจ่ายประจำวันส่งตรงมาที่ LINE ของคุณทุกเช้า',f5t:'⚠️ แจ้งเหตุฉุกเฉิน',f5d:'เครื่องเสีย พนักงานขาด ปัญหาลูกค้า — แจ้งคุณทันที',f6t:'📊 Google Sheets',f6d:'ข้อมูลทั้งหมดเข้า Google Sheets อัตโนมัติ แยกชีตตามประเภท',priceLbl:'ราคา',priceTitle:'ชัดเจน ไม่มีซ่อน',priceSub:'ค่าตั้งค่าครั้งเดียว + ค่าสมาชิกรายเดือน ยกเลิกได้ทุกเมื่อ',setupLbl:'ค่าตั้งค่าครั้งเดียว',setupNote1:'รวมติดตั้ง + ตั้งค่า + ทดสอบ',setupNote2:'รวมติดตั้ง + ตั้งค่า custom + ทดสอบ',setupNote3:'รวม custom setup + integration',subLbl:'/เดือน',popularBadge:'ยอดนิยม',p1period:'สำหรับร้านเดี่ยว 1 กลุ่ม LINE',p2period:'สำหรับร้านที่ต้องการครบ 3 กลุ่ม',p3period:'สำหรับหลายสาขา ไม่จำกัดกลุ่ม',p1f1:'1 กลุ่ม LINE',p1f2:'แจ้งเตือนอัจฉริยะ',p1f3:'สแกนใบเสร็จ',p1f4:'สรุปรายจ่ายรายวัน',p1f5:'Google Sheets 1 ชีต',p1f6:'support ทาง LINE',p2f1:'3 กลุ่ม LINE',p2f2:'AI วิเคราะห์ขั้นสูง',p2f3:'สแกนใบเสร็จ + ใบส่งของ',p2f4:'สรุปรายจ่าย + สต็อก',p2f5:'Google Sheets ครบชุด',p2f6:'รายงานรายสัปดาห์',p2f7:'priority support 24/7',p3f1:'ไม่จำกัดกลุ่ม LINE',p3f2:'หลายสาขา',p3f3:'Custom AI สำหรับธุรกิจ',p3f4:'Dashboard + รายงาน',p3f5:'API integration',p3f6:'Account manager ส่วนตัว',pbtn1:'สอบถามเพิ่มเติม',pbtn2:'เริ่มใช้งาน',pbtn3:'ติดต่อทีมงาน',ob1t:'🛠 ค่าตั้งค่าครั้งเดียวรวมอะไรบ้าง?',ob1l1:'เพิ่มบอทเข้ากลุ่ม LINE และตั้งค่า webhook',ob1l2:'ตั้งค่า AI ให้ตรงกับธุรกิจของคุณ',ob1l3:'เชื่อมต่อ Google Sheets ตามรูปแบบที่ต้องการ',ob1l4:'ทดสอบและปรับแต่งจนพอใจ',ob1l5:'อบรมการใช้งานเบื้องต้น',ob2t:'📅 ระยะเวลาติดตั้ง',ob2l1:'วันที่ 1: รับข้อมูล + ตั้งค่าระบบ',ob2l2:'วันที่ 2: ทดสอบร่วมกัน + ปรับแต่ง',ob2l3:'หลังจากนั้น: ใช้งานได้เลย',ob2l4:'มีปัญหา: ติดต่อได้ตลอด',faqLbl:'คำถามที่พบบ่อย',faqTitle:'มีข้อสงสัย?',fq1q:'ทำไมต้องมีค่าตั้งค่าครั้งแรก?',fq1a:'เพราะเราตั้งค่าระบบให้ตรงกับธุรกิจของคุณโดยเฉพาะ ทีมงานใช้เวลา 1-2 วันในการติดตั้ง ทดสอบ และปรับแต่ง',fq2q:'ต้องติดตั้งอะไรเพิ่มไหม?',fq2a:'ไม่ต้องเลย ทำงานผ่าน LINE ที่มีอยู่แล้ว ทีมงานจัดการทุกอย่างให้',fq3q:'ข้อมูลในกลุ่มปลอดภัยไหม?',fq3a:'ข้อมูลถูกประมวลผลเพื่อแจ้งเตือนเจ้าของร้านเท่านั้น ไม่มีการเก็บข้อความส่วนตัว',fq4q:'ยกเลิกได้ตอนไหน?',fq4a:'ยกเลิกได้ทุกเมื่อ ไม่มีสัญญาผูกมัด ไม่มีค่าปรับ แจ้งล่วงหน้า 1 เดือน',ctaTitle:'พร้อมให้ AI<br>ดูแลแทนคุณ?',ctaSub:'ปรึกษาฟรี ไม่มีข้อผูกมัด ทีมงานตอบภายใน 24 ชม.',ctaBtn:'ติดต่อ NotiMate ↗',footerCopy:'© 2025 NotiMate · AI ดูแลธุรกิจแทนคุณ'},
-en:{badge:'AI for Thai Business',heroTitle:'Stop reading<br>every message.<br><span class="g">NotiMate does it for you.</span>',heroSub:'AI that monitors your LINE staff group chats 24/7 and alerts you only about what matters — never miss anything important again.',btnStart:'Get Started ↗',btnPrice:'See Pricing',navCta:'Try Today →',chat1:'Sugar is running out — staff requesting 5kg reorder',chat2:"Today's expenses: ฿2,450 (ingredients + packaging)",chat3:'✅ Got it, ordered',chat4:'Coffee machine broken — staff awaiting instructions',chat5:'📞 Call technician now',howLbl:'How It Works',howTitle:'Set up in 5 minutes',howSub:'Works on your existing LINE — no extra apps needed',s1t:'Add bot to group',s1d:'Add NotiMate to your existing LINE staff group. Takes 1 minute.',s2t:'Configure together',s2d:'Our team configures it for your business — you define what "important" means.',s3t:'AI starts working',s3d:'NotiMate analyzes every message, identifying what needs your attention.',s4t:'Receive alerts',s4d:'You only get what matters — orders, problems, expenses.',featLbl:'Features',featTitle:'Everything in one place',f1t:'🔔 Smart Alerts',f1d:'AI analyzes every message and notifies you only about what matters. No spam.',f2t:'📸 Receipt Scanning',f2d:'Photo a receipt — AI reads and logs the expense to Google Sheets automatically.',f3t:'📦 Stock Tracking',f3d:'Staff reports low stock — bot logs it and alerts you to reorder automatically.',f4t:'💰 Expense Summary',f4d:'Daily expense report sent directly to your LINE every morning.',f5t:'⚠️ Emergency Alerts',f5d:'Equipment breakdown, absent staff, customer issues — notified instantly.',f6t:'📊 Google Sheets',f6d:'All data goes to Google Sheets automatically, organized by category.',priceLbl:'Pricing',priceTitle:'Clear. No surprises.',priceSub:'One-time setup fee + monthly subscription. Cancel anytime.',setupLbl:'One-time setup fee',setupNote1:'Includes install + configure + test',setupNote2:'Includes install + custom config + test',setupNote3:'Includes custom setup + integration',subLbl:'/month',popularBadge:'Most Popular',p1period:'For single location, 1 LINE group',p2period:'For growing business, 3 LINE groups',p3period:'For multi-branch, unlimited groups',p1f1:'1 LINE group',p1f2:'Smart alerts',p1f3:'Receipt scanning',p1f4:'Daily expense summary',p1f5:'Google Sheets (1 sheet)',p1f6:'LINE support',p2f1:'3 LINE groups',p2f2:'Advanced AI analysis',p2f3:'Receipt + invoice scanning',p2f4:'Expense + stock tracking',p2f5:'Full Google Sheets suite',p2f6:'Weekly reports',p2f7:'Priority support 24/7',p3f1:'Unlimited LINE groups',p3f2:'Multi-branch support',p3f3:'Custom AI for your business',p3f4:'Dashboard + reports',p3f5:'API integration',p3f6:'Dedicated account manager',pbtn1:'Ask a question',pbtn2:'Get Started',pbtn3:'Contact Team',ob1t:'🛠 What does setup include?',ob1l1:'Add bot to LINE groups and configure webhook',ob1l2:'Configure AI specifically for your business',ob1l3:'Connect Google Sheets in your format',ob1l4:'Test and fine-tune until satisfied',ob1l5:'Basic usage training',ob2t:'📅 Installation timeline',ob2l1:'Day 1: Collect info + system setup',ob2l2:'Day 2: Joint testing + adjustments',ob2l3:'After that: ready to use',ob2l4:'Any issues: contact us anytime',faqLbl:'FAQ',faqTitle:'Questions?',fq1q:'Why is there a setup fee?',fq1a:'Because we configure the system specifically for your business. Our team spends 1-2 days installing, testing, and tuning it for your shop.',fq2q:'Do I need to install anything?',fq2a:'Not at all. Works through your existing LINE. Our team handles everything.',fq3q:'Is the group data safe?',fq3a:'Data is processed only to alert the shop owner. No private messages are stored or shared.',fq4q:'When can I cancel?',fq4a:'Cancel anytime. No contracts, no penalties. Just 1 month notice.',ctaTitle:'Ready for AI to<br>run your business?',ctaSub:'Free consultation. No commitment. Team responds within 24h.',ctaBtn:'Contact NotiMate ↗',footerCopy:'© 2025 NotiMate · AI for your business'},
-ru:{badge:'AI для бизнеса в Таиланде',heroTitle:'Перестаньте читать<br>каждое сообщение.<br><span class="g">NotiMate сделает это за Вас.</span>',heroSub:'AI мониторит LINE-чаты сотрудников 24/7 и уведомляет только о важном — никогда больше не пропустите ничего критичного.',btnStart:'Начать ↗',btnPrice:'Тарифы',navCta:'Попробовать →',chat1:'Сахар заканчивается — сотрудники просят заказать 5 кг',chat2:'Расходы за сегодня: ฿2,450 (ингредиенты + упаковка)',chat3:'✅ Принято, заказал',chat4:'Кофемашина сломалась — сотрудники ждут команды',chat5:'📞 Вызову мастера сейчас',howLbl:'Как это работает',howTitle:'Настройка за 5 минут',howSub:'Работает на существующем LINE — не нужно устанавливать ничего дополнительно',s1t:'Добавить бота в группу',s1d:'Добавьте NotiMate в существующую LINE-группу сотрудников. Занимает 1 минуту.',s2t:'Настраиваем вместе',s2d:'Команда помогает настроить под Ваш бизнес — Вы определяете что считать "важным".',s3t:'AI начинает работу',s3d:'NotiMate анализирует каждое сообщение, определяя что требует Вашего внимания.',s4t:'Получаете уведомления',s4d:'Вы получаете только то что важно — заказы, проблемы, расходы.',featLbl:'Возможности',featTitle:'Всё в одном месте',f1t:'🔔 Умные уведомления',f1d:'AI анализирует каждое сообщение и уведомляет только о важном. Без спама.',f2t:'📸 Сканирование чеков',f2d:'Сфотографируйте чек — AI считает его и запишет расход в Google Sheets автоматически.',f3t:'📦 Учёт склада',f3d:'Сотрудник сообщает о нехватке — бот записывает и напоминает сделать заказ.',f4t:'💰 Сводка расходов',f4d:'Ежедневный отчёт о расходах отправляется в Ваш LINE каждое утро.',f5t:'⚠️ Экстренные оповещения',f5d:'Сломалось оборудование, не вышел сотрудник, проблема с клиентом — узнаёте мгновенно.',f6t:'📊 Google Sheets',f6d:'Все данные автоматически попадают в Google Sheets, распределённые по категориям.',priceLbl:'Тарифы',priceTitle:'Прозрачно. Без скрытых платежей.',priceSub:'Разовая оплата настройки + ежемесячная подписка. Отмена в любой момент.',setupLbl:'Разовая настройка',setupNote1:'Установка + настройка + тест',setupNote2:'Установка + кастомная настройка + тест',setupNote3:'Custom setup + интеграция',subLbl:'/мес',popularBadge:'Популярный',p1period:'Для одной точки, 1 группа LINE',p2period:'Для растущего бизнеса, 3 группы',p3period:'Для нескольких точек, без лимитов',p1f1:'1 группа LINE',p1f2:'Умные уведомления',p1f3:'Сканирование чеков',p1f4:'Ежедневная сводка расходов',p1f5:'Google Sheets (1 лист)',p1f6:'Поддержка через LINE',p2f1:'3 группы LINE',p2f2:'Расширенный AI анализ',p2f3:'Чеки + накладные',p2f4:'Расходы + учёт склада',p2f5:'Полный набор Google Sheets',p2f6:'Еженедельные отчёты',p2f7:'Приоритетная поддержка 24/7',p3f1:'Без лимита групп LINE',p3f2:'Несколько точек',p3f3:'Custom AI под Ваш бизнес',p3f4:'Дашборд + отчёты',p3f5:'API интеграция',p3f6:'Персональный менеджер',pbtn1:'Задать вопрос',pbtn2:'Начать работу',pbtn3:'Связаться с командой',ob1t:'🛠 Что входит в настройку?',ob1l1:'Добавление бота в группы LINE и настройка webhook',ob1l2:'Настройка AI под специфику Вашего бизнеса',ob1l3:'Подключение Google Sheets в нужном формате',ob1l4:'Тестирование и доработка до удовлетворения',ob1l5:'Базовое обучение по использованию',ob2t:'📅 Сроки установки',ob2l1:'День 1: Сбор данных + настройка системы',ob2l2:'День 2: Совместное тестирование + правки',ob2l3:'Дальше: можно использовать',ob2l4:'Проблема: обращайтесь в любой момент',faqLbl:'Частые вопросы',faqTitle:'Есть вопросы?',fq1q:'Зачем разовая оплата настройки?',fq1a:'Потому что мы настраиваем систему именно под Ваш бизнес. Команда тратит 1-2 дня на установку, тестирование и доработку.',fq2q:'Нужно что-то устанавливать?',fq2a:'Нет. Работает через существующий LINE. Команда берёт всё на себя.',fq3q:'Данные в группе в безопасности?',fq3a:'Данные обрабатываются только для оповещения владельца. Личные сообщения не хранятся.',fq4q:'Когда можно отменить?',fq4a:'В любой момент. Без договоров и штрафов. Уведомите за 1 месяц.',ctaTitle:'Готовы отдать бизнес<br>под управление AI?',ctaSub:'Бесплатная консультация. Без обязательств. Ответим в течение 24 часов.',ctaBtn:'Написать в NotiMate ↗',footerCopy:'© 2025 NotiMate · AI для Вашего бизнеса'}
+th:{badge:'AI สำหรับธุรกิจไทย',heroTitle:'ไม่ต้องอ่าน<br>ทุกข้อความ<br><span class="g">NotiMate ทำแทนคุณ</span>',heroSub:'ระบบ AI ที่คอยติดตามแชทกลุ่มพนักงาน LINE ของคุณ 24/7 แจ้งเฉพาะสิ่งสำคัญ — ไม่ต้องพลาดอะไรอีกแล้ว',btnStart:'เริ่มใช้งาน ↗',btnPrice:'ดูราคา',navCta:'ทดลองวันนี้ →',chat1:'น้ำตาลทรายหมดแล้ว — พนักงานขอสั่งเพิ่ม 5 กิโล',chat2:'รายจ่ายวันนี้: ฿2,450 (วัตถุดิบ + แพ็คเกจ)',chat3:'✅ รับทราบ สั่งแล้ว',chat4:'เครื่องทำกาแฟเสียครับ พนักงานรอคำสั่ง',chat5:'📞 โทรหาช่างทันที',howLbl:'วิธีการทำงาน',howTitle:'ตั้งค่าใน 5 นาที',howSub:'ทำงานบน LINE ที่มีอยู่แล้ว ไม่ต้องติดตั้งแอปเพิ่ม',s1t:'เพิ่มบอทเข้ากลุ่ม',s1d:'เพิ่ม NotiMate เข้ากลุ่ม LINE พนักงานที่มีอยู่ ใช้เวลา 1 นาที',s2t:'ตั้งค่าร่วมกัน',s2d:'ทีมงานช่วยตั้งค่าให้ตรงกับธุรกิจของคุณ บอกว่าอะไรคือ "สำคัญ"',s3t:'AI เริ่มทำงาน',s3d:'NotiMate วิเคราะห์ทุกข้อความ แยกแยะสิ่งที่ต้องการความสนใจ',s4t:'รับแจ้งเตือน',s4d:'คุณได้รับเฉพาะข้อความสำคัญ — คำสั่งซื้อ ปัญหา ยอดเงิน',featLbl:'ฟีเจอร์',featTitle:'ครบ ในที่เดียว',f1t:'🔔 แจ้งเตือนอัจฉริยะ',f1d:'AI วิเคราะห์ทุกข้อความ แจ้งเฉพาะสิ่งที่สำคัญ ไม่มี spam',f2t:'📸 สแกนใบเสร็จ',f2d:'ถ่ายรูปใบเสร็จ AI อ่านและบันทึกรายจ่ายเข้า Google Sheets อัตโนมัติ',f3t:'📦 ติดตามสต็อก',f3d:'พนักงานแจ้งสินค้าหมด บอทบันทึกและแจ้งเตือนให้สั่งซื้อโดยอัตโนมัติ',f4t:'💰 สรุปรายจ่าย',f4d:'รายงานรายจ่ายประจำวันส่งตรงมาที่ LINE ของคุณทุกเช้า',f5t:'⚠️ แจ้งเหตุฉุกเฉิน',f5d:'เครื่องเสีย พนักงานขาด ปัญหาลูกค้า — แจ้งคุณทันที',f6t:'📊 Google Sheets',f6d:'ข้อมูลทั้งหมดเข้า Google Sheets อัตโนมัติ แยกชีตตามประเภท',f7tag:'ใหม่',f7t:'🧮 สรุปรายสัปดาห์',f7d:'สรุปยอดรายรับ-รายจ่ายทุกสัปดาห์อัตโนมัติ เห็นภาพรวมธุรกิจใน 3 บรรทัด',f8tag:'ใหม่',f8t:'📋 ระบบงานและการแจ้งเตือน',f8d:'มอบหมายงานผ่านแชท บอทติดตามและเตือนซ้ำถ้ายังไม่เสร็จ',f9tag:'ใหม่',f9t:'📈 ตรวจราคาจากซัพพลายเออร์',f9d:'AI จำราคาสินค้าจากใบเสร็จ แจ้งเตือนทันทีเมื่อซัพพลายเออร์ขึ้นราคา',priceLbl:'ราคา',priceTitle:'ชัดเจน ไม่มีซ่อน',priceSub:'ค่าตั้งค่าครั้งเดียว + ค่าสมาชิกรายเดือน ยกเลิกได้ทุกเมื่อ',setupLbl:'ค่าตั้งค่าครั้งเดียว',setupNote1:'รวมติดตั้ง + ตั้งค่า + ทดสอบ',setupNote2:'รวมติดตั้ง + ตั้งค่า custom + ทดสอบ',setupNote3:'รวม custom setup + integration',subLbl:'/เดือน',popularBadge:'ยอดนิยม',p1period:'สำหรับร้านเดี่ยว 1 กลุ่ม LINE',p2period:'สำหรับร้านที่ต้องการครบ 3 กลุ่ม',p3period:'สำหรับหลายสาขา ไม่จำกัดกลุ่ม',p1f1:'1 กลุ่ม LINE',p1f2:'แจ้งเตือนอัจฉริยะ',p1f3:'สแกนใบเสร็จ',p1f4:'สรุปรายจ่ายรายวัน',p1f5:'Google Sheets 1 ชีต',p1f6:'support ทาง LINE',p2f1:'3 กลุ่ม LINE',p2f2:'AI วิเคราะห์ขั้นสูง',p2f3:'สแกนใบเสร็จ + ใบส่งของ',p2f4:'สรุปรายจ่าย + สต็อก',p2f5:'Google Sheets ครบชุด',p2f6:'รายงานรายสัปดาห์',p2f7:'priority support 24/7',p3f1:'ไม่จำกัดกลุ่ม LINE',p3f2:'หลายสาขา',p3f3:'Custom AI สำหรับธุรกิจ',p3f4:'Dashboard + รายงาน',p3f5:'API integration',p3f6:'Account manager ส่วนตัว',pbtn1:'สอบถามเพิ่มเติม',pbtn2:'เริ่มใช้งาน',pbtn3:'ติดต่อทีมงาน',ob1t:'🛠 ค่าตั้งค่าครั้งเดียวรวมอะไรบ้าง?',ob1l1:'เพิ่มบอทเข้ากลุ่ม LINE และตั้งค่าระบบ',ob1l2:'ตั้งค่า AI ให้ตรงกับธุรกิจของคุณ',ob1l3:'เชื่อมต่อ Google Sheets ตามรูปแบบที่ต้องการ',ob1l4:'ทดสอบและปรับแต่งจนพอใจ',ob1l5:'อบรมการใช้งานเบื้องต้น',ob2t:'📅 ระยะเวลาติดตั้ง',ob2l1:'วันที่ 1: รับข้อมูล + ตั้งค่าระบบ',ob2l2:'วันที่ 2: ทดสอบร่วมกัน + ปรับแต่ง',ob2l3:'หลังจากนั้น: ใช้งานได้เลย',ob2l4:'มีปัญหา: ติดต่อได้ตลอด',faqLbl:'คำถามที่พบบ่อย',faqTitle:'มีข้อสงสัย?',fq1q:'ทำไมต้องมีค่าตั้งค่าครั้งแรก?',fq1a:'เพราะเราตั้งค่าระบบให้ตรงกับธุรกิจของคุณโดยเฉพาะ ทีมงานใช้เวลา 1-2 วันในการติดตั้ง ทดสอบ และปรับแต่ง',fq2q:'ต้องติดตั้งอะไรเพิ่มไหม?',fq2a:'ไม่ต้องเลย ทำงานผ่าน LINE ที่มีอยู่แล้ว ทีมงานจัดการทุกอย่างให้',fq3q:'ข้อมูลในกลุ่มปลอดภัยไหม?',fq3a:'ข้อมูลถูกประมวลผลเพื่อแจ้งเตือนเจ้าของร้านเท่านั้น ไม่มีการเก็บข้อความส่วนตัว',fq4q:'ยกเลิกได้ตอนไหน?',fq4a:'ยกเลิกได้ทุกเมื่อ ไม่มีสัญญาผูกมัด ไม่มีค่าปรับ แจ้งล่วงหน้า 1 เดือน',ctaTitle:'พร้อมให้ AI<br>ดูแลแทนคุณ?',ctaSub:'ปรึกษาฟรี ไม่มีข้อผูกมัด ทีมงานตอบภายใน 24 ชม.',ctaBtn:'ลองทำแบบสอบถาม ↗',footerCopy:'© 2025 NotiMate · AI ดูแลธุรกิจแทนคุณ',quizLbl:'เริ่มต้นใช้งาน',quizTitle:'เหมาะกับธุรกิจของคุณไหม?',quizSub:'ตอบ 4 ข้อ รู้เลยว่า NotiMate ช่วยคุณได้อย่างไร และทีมงานจะติดต่อกลับ',qs1lbl:'ขั้นตอน 1 จาก 4',qs1title:'ธุรกิจของคุณคืออะไร?',qs2lbl:'ขั้นตอน 2 จาก 4',qs2title:'มีกลุ่ม LINE พนักงานกี่กลุ่ม?',qs3lbl:'ขั้นตอน 3 จาก 4',qs3title:'อยากรู้เรื่องอะไรบ้าง?',qs3hint:'เลือกได้หลายข้อ',qs4lbl:'ขั้นตอน 4 จาก 4',qs4title:'ต้องการรับการแจ้งเตือนภาษาอะไร?',qs5lbl:'พร้อมแล้ว!',qs5title:'นี่คือแพ็คเกจที่เหมาะกับคุณ',qrnext:'ถัดไป',qrback:'ย้อนกลับ',qrresult:'ดูผลลัพธ์',qryourlbl:'สรุปข้อมูลของคุณ',qrctitle:'สิ่งที่ต้องเตรียมสำหรับการนัดหมาย',qrcl1:'ชื่อร้าน / ธุรกิจ',qrch1:'ชื่อที่ใช้งานจริง',qrcl2:'LINE Official Account',qrch2:'ถ้ามีอยู่แล้ว — บอก ID รูปแบบ @xxxxxxx ถ้าไม่มี — สร้างด้วยกันในวันนัด',qrcl3:'ผู้รับการแจ้งเตือน',qrch3:'ชื่อและ LINE ของเจ้าของหรือผู้จัดการที่จะรับข้อความ',qrcl4:'Google Account',qrch4:'อีเมล Google เพื่อแชร์ไฟล์บันทึกข้อมูล — เตรียมได้เลย ไม่ต้องทำอะไรเพิ่ม',qrsendbtn:'ส่งข้อมูลนี้ใน LINE ↗',qrsendnote:'กดแล้วจะเปิด LINE พร้อมข้อความสรุป — ส่งได้เลย ทีมงานจะติดต่อกลับภายใน 24 ชม.',qrl_biz:'ประเภทธุรกิจ',qrl_groups:'จำนวนกลุ่ม',qrl_notify:'แจ้งเตือนเรื่อง',qrl_lang:'ภาษา',qrl_tariff:'แพ็คเกจแนะนำ',qo1a:'คาเฟ่ / เบเกอรี่',qo1b:'ร้านอาหาร',qo1c:'ร้านค้า / รีเทล',qo1d:'บริการ (ร้านเสริมสวย ฯลฯ)',qo1e:'อื่นๆ',qo2a:'1 กลุ่ม',qo2b:'2–3 กลุ่ม',qo2c:'4 กลุ่มขึ้นไป',qo4a:'ภาษาไทย',qo4b:'English',qo4c:'Русский',qn1:'📦 สต็อกและการสั่งซื้อ',qn2:'💰 รายรับ-รายจ่าย',qn3:'⚠️ ปัญหาและเหตุฉุกเฉิน',qn4:'👥 พนักงานและกะงาน',qn5:'📸 ใบเสร็จ → บันทึกอัตโนมัติ',qn6:'✅ งานและการติดตาม',qback2:'ย้อนกลับ',qback3:'ย้อนกลับ',qback4:'ย้อนกลับ'},
+en:{badge:'AI for Thai Business',heroTitle:'Stop reading<br>every message.<br><span class="g">NotiMate does it for you.</span>',heroSub:'AI that monitors your LINE staff group chats 24/7 and alerts you only about what matters — never miss anything important again.',btnStart:'Get Started ↗',btnPrice:'See Pricing',navCta:'Try Today →',chat1:'Sugar is running out — staff requesting 5kg reorder',chat2:"Today's expenses: ฿2,450 (ingredients + packaging)",chat3:'✅ Got it, ordered',chat4:'Coffee machine broken — staff awaiting instructions',chat5:'📞 Call technician now',howLbl:'How It Works',howTitle:'Set up in 5 minutes',howSub:'Works on your existing LINE — no extra apps needed',s1t:'Add bot to group',s1d:'Add NotiMate to your existing LINE staff group. Takes 1 minute.',s2t:'Configure together',s2d:'Our team configures it for your business — you define what "important" means.',s3t:'AI starts working',s3d:'NotiMate analyzes every message, identifying what needs your attention.',s4t:'Receive alerts',s4d:'You only get what matters — orders, problems, expenses.',featLbl:'Features',featTitle:'Everything in one place',f1t:'🔔 Smart Alerts',f1d:'AI analyzes every message and notifies you only about what matters. No spam.',f2t:'📸 Receipt Scanning',f2d:'Photo a receipt — AI reads and logs the expense to Google Sheets automatically.',f3t:'📦 Stock Tracking',f3d:'Staff reports low stock — bot logs it and alerts you to reorder automatically.',f4t:'💰 Expense Summary',f4d:'Daily expense report sent directly to your LINE every morning.',f5t:'⚠️ Emergency Alerts',f5d:'Equipment breakdown, absent staff, customer issues — notified instantly.',f6t:'📊 Google Sheets',f6d:'All data goes to Google Sheets automatically, organized by category.',f7tag:'NEW',f7t:'🧮 Weekly Summary',f7d:'Automatic weekly revenue & expense recap. See your business overview in 3 lines.',f8tag:'NEW',f8t:'📋 Task Management',f8d:'Assign tasks via chat. Bot follows up automatically if a task is not completed.',f9tag:'NEW',f9t:'📈 Supplier Price Tracking',f9d:'AI remembers prices from receipts and alerts you the moment a supplier raises prices.',priceLbl:'Pricing',priceTitle:'Clear. No surprises.',priceSub:'One-time setup fee + monthly subscription. Cancel anytime.',setupLbl:'One-time setup fee',setupNote1:'Includes install + configure + test',setupNote2:'Includes install + custom config + test',setupNote3:'Includes custom setup + integration',subLbl:'/month',popularBadge:'Most Popular',p1period:'For single location, 1 LINE group',p2period:'For growing business, 3 LINE groups',p3period:'For multi-branch, unlimited groups',p1f1:'1 LINE group',p1f2:'Smart alerts',p1f3:'Receipt scanning',p1f4:'Daily expense summary',p1f5:'Google Sheets (1 sheet)',p1f6:'LINE support',p2f1:'3 LINE groups',p2f2:'Advanced AI analysis',p2f3:'Receipt + invoice scanning',p2f4:'Expense + stock tracking',p2f5:'Full Google Sheets suite',p2f6:'Weekly reports',p2f7:'Priority support 24/7',p3f1:'Unlimited LINE groups',p3f2:'Multi-branch support',p3f3:'Custom AI for your business',p3f4:'Dashboard + reports',p3f5:'API integration',p3f6:'Dedicated account manager',pbtn1:'Ask a question',pbtn2:'Get Started',pbtn3:'Contact Team',ob1t:'🛠 What does setup include?',ob1l1:'Add bot to LINE groups and set up the system',ob1l2:'Configure AI specifically for your business',ob1l3:'Connect Google Sheets in your format',ob1l4:'Test and fine-tune until satisfied',ob1l5:'Basic usage training',ob2t:'📅 Installation timeline',ob2l1:'Day 1: Collect info + system setup',ob2l2:'Day 2: Joint testing + adjustments',ob2l3:'After that: ready to use',ob2l4:'Any issues: contact us anytime',faqLbl:'FAQ',faqTitle:'Questions?',fq1q:'Why is there a setup fee?',fq1a:'Because we configure the system specifically for your business. Our team spends 1-2 days installing, testing, and tuning it for your shop.',fq2q:'Do I need to install anything?',fq2a:'Not at all. Works through your existing LINE. Our team handles everything.',fq3q:'Is the group data safe?',fq3a:'Data is processed only to alert the shop owner. No private messages are stored or shared.',fq4q:'When can I cancel?',fq4a:'Cancel anytime. No contracts, no penalties. Just 1 month notice.',ctaTitle:'Ready for AI to<br>run your business?',ctaSub:'Free consultation. No commitment. Team responds within 24h.',ctaBtn:'Take the quiz ↗',footerCopy:'© 2025 NotiMate · AI for your business',quizLbl:'Get Started',quizTitle:'Is NotiMate right for you?',quizSub:'Answer 4 questions and find out exactly how NotiMate can help your business.',qs1lbl:'Step 1 of 4',qs1title:'What type of business do you run?',qs2lbl:'Step 2 of 4',qs2title:'How many LINE staff groups do you have?',qs3lbl:'Step 3 of 4',qs3title:'What do you want to be notified about?',qs3hint:'You can select multiple',qs4lbl:'Step 4 of 4',qs4title:'What language for alerts?',qs5lbl:'All done!',qs5title:"Here's your recommended plan",qrnext:'Next',qrback:'Back',qrresult:'See Results',qryourlbl:'Your summary',qrctitle:'What to prepare before our call',qrcl1:'Business name',qrch1:'Your working business name',qrcl2:'LINE Official Account',qrch2:'If you have one — share the @xxxxxxx ID. If not — we set it up together.',qrcl3:'Who receives alerts',qrch3:'Name and LINE of the owner or manager who will get notifications',qrcl4:'Google Account',qrch4:'Gmail address to share the data spreadsheet — no action needed beyond that',qrsendbtn:'Send to LINE ↗',qrsendnote:'Tapping opens LINE with a ready-made message — just send it. We reply within 24h.',qrl_biz:'Business type',qrl_groups:'Groups',qrl_notify:'Alert topics',qrl_lang:'Language',qrl_tariff:'Recommended plan',qo1a:'Café / Bakery',qo1b:'Restaurant',qo1c:'Retail Shop',qo1d:'Service (salon, workshop...)',qo1e:'Other',qo2a:'1 group',qo2b:'2–3 groups',qo2c:'4+ groups',qo4a:'Thai',qo4b:'English',qo4c:'Russian',qn1:'📦 Stock & orders',qn2:'💰 Revenue & expenses',qn3:'⚠️ Problems & emergencies',qn4:'👥 Staff & shifts',qn5:'📸 Receipts → auto-log',qn6:'✅ Tasks & follow-ups',qback2:'Back',qback3:'Back',qback4:'Back'},
+ru:{badge:'AI для бизнеса в Таиланде',heroTitle:'Перестаньте читать<br>каждое сообщение.<br><span class="g">NotiMate сделает это за Вас.</span>',heroSub:'AI мониторит LINE-чаты сотрудников 24/7 и уведомляет только о важном — никогда больше не пропустите ничего критичного.',btnStart:'Начать ↗',btnPrice:'Тарифы',navCta:'Попробовать →',chat1:'Сахар заканчивается — сотрудники просят заказать 5 кг',chat2:'Расходы за сегодня: ฿2,450 (ингредиенты + упаковка)',chat3:'✅ Принято, заказал',chat4:'Кофемашина сломалась — сотрудники ждут команды',chat5:'📞 Вызову мастера сейчас',howLbl:'Как это работает',howTitle:'Настройка за 5 минут',howSub:'Работает на существующем LINE — не нужно устанавливать ничего дополнительно',s1t:'Добавить бота в группу',s1d:'Добавьте NotiMate в существующую LINE-группу сотрудников. Занимает 1 минуту.',s2t:'Настраиваем вместе',s2d:'Команда помогает настроить под Ваш бизнес — Вы определяете что считать "важным".',s3t:'AI начинает работу',s3d:'NotiMate анализирует каждое сообщение, определяя что требует Вашего внимания.',s4t:'Получаете уведомления',s4d:'Вы получаете только то что важно — заказы, проблемы, расходы.',featLbl:'Возможности',featTitle:'Всё в одном месте',f1t:'🔔 Умные уведомления',f1d:'AI анализирует каждое сообщение и уведомляет только о важном. Без спама.',f2t:'📸 Сканирование чеков',f2d:'Сфотографируйте чек — AI считает его и запишет расход в Google Sheets автоматически.',f3t:'📦 Учёт склада',f3d:'Сотрудник сообщает о нехватке — бот записывает и напоминает сделать заказ.',f4t:'💰 Сводка расходов',f4d:'Ежедневный отчёт о расходах отправляется в Ваш LINE каждое утро.',f5t:'⚠️ Экстренные оповещения',f5d:'Сломалось оборудование, не вышел сотрудник, проблема с клиентом — узнаёте мгновенно.',f6t:'📊 Google Sheets',f6d:'Все данные автоматически попадают в Google Sheets, распределённые по категориям.',f7tag:'НОВОЕ',f7t:'🧮 Еженедельная аналитика',f7d:'Автоматическая сводка доходов и расходов за неделю. Обзор бизнеса в 3 строках.',f8tag:'НОВОЕ',f8t:'📋 Задачи и напоминания',f8d:'Ставьте задачи прямо в чате. Бот отслеживает и напоминает если задача не выполнена.',f9tag:'НОВОЕ',f9t:'📈 Мониторинг цен поставщиков',f9d:'AI запоминает цены из чеков и сразу предупреждает когда поставщик поднял цену.',priceLbl:'Тарифы',priceTitle:'Прозрачно. Без скрытых платежей.',priceSub:'Разовая оплата настройки + ежемесячная подписка. Отмена в любой момент.',setupLbl:'Разовая настройка',setupNote1:'Установка + настройка + тест',setupNote2:'Установка + кастомная настройка + тест',setupNote3:'Custom setup + интеграция',subLbl:'/мес',popularBadge:'Популярный',p1period:'Для одной точки, 1 группа LINE',p2period:'Для растущего бизнеса, 3 группы',p3period:'Для нескольких точек, без лимитов',p1f1:'1 группа LINE',p1f2:'Умные уведомления',p1f3:'Сканирование чеков',p1f4:'Ежедневная сводка расходов',p1f5:'Google Sheets (1 лист)',p1f6:'Поддержка через LINE',p2f1:'3 группы LINE',p2f2:'Расширенный AI анализ',p2f3:'Чеки + накладные',p2f4:'Расходы + учёт склада',p2f5:'Полный набор Google Sheets',p2f6:'Еженедельные отчёты',p2f7:'Приоритетная поддержка 24/7',p3f1:'Без лимита групп LINE',p3f2:'Несколько точек',p3f3:'Custom AI под Ваш бизнес',p3f4:'Дашборд + отчёты',p3f5:'API интеграция',p3f6:'Персональный менеджер',pbtn1:'Задать вопрос',pbtn2:'Начать работу',pbtn3:'Связаться с командой',ob1t:'🛠 Что входит в настройку?',ob1l1:'Добавление бота в группы LINE и настройка системы',ob1l2:'Настройка AI под специфику Вашего бизнеса',ob1l3:'Подключение Google Sheets в нужном формате',ob1l4:'Тестирование и доработка до удовлетворения',ob1l5:'Базовое обучение по использованию',ob2t:'📅 Сроки установки',ob2l1:'День 1: Сбор данных + настройка системы',ob2l2:'День 2: Совместное тестирование + правки',ob2l3:'Дальше: можно использовать',ob2l4:'Проблема: обращайтесь в любой момент',faqLbl:'Частые вопросы',faqTitle:'Есть вопросы?',fq1q:'Зачем разовая оплата настройки?',fq1a:'Потому что мы настраиваем систему именно под Ваш бизнес. Команда тратит 1-2 дня на установку, тестирование и доработку.',fq2q:'Нужно что-то устанавливать?',fq2a:'Нет. Работает через существующий LINE. Команда берёт всё на себя.',fq3q:'Данные в группе в безопасности?',fq3a:'Данные обрабатываются только для оповещения владельца. Личные сообщения не хранятся.',fq4q:'Когда можно отменить?',fq4a:'В любой момент. Без договоров и штрафов. Уведомите за 1 месяц.',ctaTitle:'Готовы отдать бизнес<br>под управление AI?',ctaSub:'Бесплатная консультация. Без обязательств. Ответим в течение 24 часов.',ctaBtn:'Пройти анкету ↗',footerCopy:'© 2025 NotiMate · AI для Вашего бизнеса',quizLbl:'Начать',quizTitle:'Подходит ли NotiMate для Вашего бизнеса?',quizSub:'Ответьте на 4 вопроса — и узнайте как именно NotiMate поможет именно Вам.',qs1lbl:'Шаг 1 из 4',qs1title:'Какой у Вас тип бизнеса?',qs2lbl:'Шаг 2 из 4',qs2title:'Сколько рабочих групп в LINE?',qs3lbl:'Шаг 3 из 4',qs3title:'О чём хотите получать уведомления?',qs3hint:'Можно выбрать несколько',qs4lbl:'Шаг 4 из 4',qs4title:'На каком языке присылать уведомления?',qs5lbl:'Готово!',qs5title:'Вот что мы подберём для Вас',qrnext:'Далее',qrback:'Назад',qrresult:'Посмотреть результат',qryourlbl:'Ваши ответы',qrctitle:'Что подготовить к встрече',qrcl1:'Название бизнеса',qrch1:'Рабочее название Вашей точки',qrcl2:'LINE Official Account',qrch2:'Если есть — ID вида @xxxxxxx. Нет — создадим вместе на встрече',qrcl3:'Кто получает уведомления',qrch3:'Имя и LINE владельца или менеджера который будет получать сообщения',qrcl4:'Google аккаунт',qrch4:'Gmail для доступа к таблице данных — больше ничего делать не нужно',qrsendbtn:'Отправить в LINE ↗',qrsendnote:'Нажмите — откроется LINE с готовым сообщением. Просто отправьте. Ответим в течение 24 часов.',qrl_biz:'Тип бизнеса',qrl_groups:'Групп LINE',qrl_notify:'Уведомления о',qrl_lang:'Язык',qrl_tariff:'Рекомендуемый тариф',qo1a:'Кофейня / Пекарня',qo1b:'Ресторан / Кафе',qo1c:'Магазин / Розница',qo1d:'Услуги (салон, мастерская...)',qo1e:'Другое',qo2a:'1 группа',qo2b:'2–3 группы',qo2c:'4+ групп',qo4a:'Тайский',qo4b:'Английский',qo4c:'Русский',qn1:'📦 Склад и закупки',qn2:'💰 Деньги и выручка',qn3:'⚠️ Поломки и ЧП',qn4:'👥 Персонал',qn5:'📸 Чеки → авто-запись',qn6:'✅ Задачи и поручения',qback2:'Назад',qback3:'Назад',qback4:'Назад'}
 };
+
 function setLang(l){
+  curLang=l;
   const t=T[l];
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
   const s=(id,v,h)=>{const e=document.getElementById(id);if(e){h?e.innerHTML=v:e.textContent=v;}};
@@ -244,7 +476,11 @@ function setLang(l){
   s('how-lbl',t.howLbl);s('how-title',t.howTitle);s('how-sub',t.howSub);
   [1,2,3,4].forEach(i=>{s('s'+i+'t',t['s'+i+'t']);s('s'+i+'d',t['s'+i+'d']);});
   s('feat-lbl',t.featLbl);s('feat-title',t.featTitle);
-  [1,2,3,4,5,6].forEach(i=>{s('f'+i+'t',t['f'+i+'t']);s('f'+i+'d',t['f'+i+'d']);});
+  [1,2,3,4,5,6,7,8,9].forEach(i=>{
+    if(t['f'+i+'t'])s('f'+i+'t',t['f'+i+'t']);
+    if(t['f'+i+'d'])s('f'+i+'d',t['f'+i+'d']);
+    if(t['f'+i+'tag'])s('f'+i+'tag',t['f'+i+'tag']);
+  });
   s('price-lbl',t.priceLbl);s('price-title',t.priceTitle);s('price-sub',t.priceSub);
   s('setup-lbl',t.setupLbl);s('setup-lbl2',t.setupLbl);s('setup-lbl3',t.setupLbl);
   [1,2,3].forEach(i=>{s('setup-note'+i,t['setupNote'+i]);s('sub-lbl'+i,t.setupLbl);s('per-mo'+i,t.subLbl);});
@@ -260,6 +496,21 @@ function setLang(l){
   [1,2,3,4].forEach(i=>{s('fq'+i+'q',t['fq'+i+'q']);s('fq'+i+'a',t['fq'+i+'a']);});
   s('cta-title',t.ctaTitle,1);s('cta-sub',t.ctaSub);s('cta-btn',t.ctaBtn);
   s('footer-copy',t.footerCopy);
+  // quiz
+  s('quiz-lbl',t.quizLbl);s('quiz-title',t.quizTitle);s('quiz-sub',t.quizSub);
+  s('qs1lbl',t.qs1lbl);s('qs1title',t.qs1title);
+  s('qs2lbl',t.qs2lbl);s('qs2title',t.qs2title);
+  s('qs3lbl',t.qs3lbl);s('qs3title',t.qs3title);s('qs3hint',t.qs3hint);
+  s('qs4lbl',t.qs4lbl);s('qs4title',t.qs4title);
+  s('qs5lbl',t.qs5lbl);s('qs5title',t.qs5title);
+  s('qnext1',t.qrnext);s('qnext2',t.qrnext);s('qnext3',t.qrnext);s('qnext4',t.qrresult);
+  s('qback2',t.qrback);s('qback3',t.qrback);s('qback4',t.qrback);
+  s('qr-yourlbl',t.qryourlbl);s('qc-title',t.qrctitle);
+  s('qcl1',t.qrcl1);s('qch1',t.qrch1);s('qcl2',t.qrcl2);s('qch2',t.qrch2);
+  s('qcl3',t.qrcl3);s('qch3',t.qrch3);s('qcl4',t.qrcl4);s('qch4',t.qrch4);
+  s('qsendbtn',t.qrsendbtn);s('qsend-note',t.qrsendnote);
+  s('qrl-biz',t.qrl_biz);s('qrl-groups',t.qrl_groups);s('qrl-notify',t.qrl_notify);s('qrl-lang',t.qrl_lang);s('qrl-tariff',t.qrl_tariff);
+  ['qo1a','qo1b','qo1c','qo1d','qo1e','qo2a','qo2b','qo2c','qo4a','qo4b','qo4c','qn1','qn2','qn3','qn4','qn5','qn6'].forEach(id=>s(id,t[id]));
 }
 </script>
 </body>
