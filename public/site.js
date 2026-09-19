@@ -50,8 +50,7 @@ function applyLanguage(requested){
   document.querySelectorAll("[data-i18n-html]").forEach((element)=>{const key=element.dataset.i18nHtml;if(copy[key]!==undefined&&htmlKeys.has(key))element.innerHTML=copy[key]});
   document.querySelectorAll("[data-signal-context]").forEach((element)=>{element.textContent=signalContextCopy[lang]});
   document.querySelectorAll(".language-switch button").forEach((button)=>button.classList.toggle("active",button.dataset.lang===lang));
-  const message=lang==="ru"?"Здравствуйте! Хочу обсудить тестовый запуск NotiMate для моего бизнеса.":lang==="en"?"Hello! I'd like to discuss a NotiMate test run for my business.":"สวัสดีครับ/ค่ะ สนใจทดสอบระบบ NotiMate สำหรับธุรกิจ";
-  const url=`https://line.me/R/oaMessage/@306bqpwf/?${encodeURIComponent(message)}`;
+  const url="https://line.me/ti/p/q8Id2v4r5g";
   document.querySelectorAll(".line-cta").forEach((link)=>{link.href=url});
   localStorage.setItem("notimate-language",lang);
 }
