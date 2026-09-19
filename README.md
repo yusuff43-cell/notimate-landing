@@ -18,6 +18,13 @@ npm run build
 
 This starter does not use `wrangler.jsonc`.
 
+## Cloudflare Pages deployment
+
+The public marketing pages are pre-rendered assets in `public/`. In Cloudflare
+Pages use `npm run build` as the build command and `dist/client` as the build
+output directory. `public/_redirects` keeps `/`, `/privacy`, and `/terms` on
+their public URLs.
+
 ## Included Shape
 
 - edit site code under `app/`
